@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "==18.9b0"
+pylint = "*"
+pytest = "*"
+
+[packages]
+colorama = "*"
+
+[requires]
+python_version = "3.7"
