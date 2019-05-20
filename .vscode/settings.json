@@ -1,7 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\wildenhaip\\.virtualenvs\\playing-cards-terminal-wuF1Xuk8\\Scripts\\python.exe",
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "editor.formatOnSave": true
-}
