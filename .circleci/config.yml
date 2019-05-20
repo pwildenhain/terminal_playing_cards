@@ -1,0 +1,34 @@
+# Taken from https://realpython.com/python-continuous-integration/#connect-to-circleci
+# And from https://circleci.com/docs/2.0/language-python/
+# Python CircleCI 2.0 configuration file
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+
+    working_directory: ~/playing-cards-terminal
+
+    steps:
+      # Step 1: obtain repo from GitHub
+      - checkout
+      # Step 2: create virtual env and install dependencies
+      - run:
+          name: install dependencies
+          command: |
+            sudo pip install pipenv
+            pipenv install --dev
+      # Step 3: cache dependencies
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
+      # Step 4: run linter and tests
+      - run:
+          name: run tests
+          command: |
+            pipenv shell
+            black -v --check
+            pytest -v --cov=calculator
