@@ -29,5 +29,8 @@ jobs:
       - run:
           name: run tests
           command: |
-            pipenv run pytest -v
+            mkdir -p test-results/pytest
+            pipenv run pytest -v --junit-xml=test-results/pytest/results.xml
             pipenv run pylint playing_cards_terminal --exit-zero
+      - store_test_results:
+          path: test-results
