@@ -1,14 +1,16 @@
+"""Playground for testing module, this file will eventually be deleted"""
+
 from playing_cards_terminal import cards, cards_config
 
-suits = cards_config.SUIT_SYMBOL_DICT.keys()
+SUITS = cards_config.SUIT_SYMBOL_DICT.keys()
 # faces = card_config.CARD_FACE_DICT.keys()
-faces = ["A"]
+FACES = ["A"]
 # Going to need a hand_grid variable for printing out the entire hand
 # Will be interesting to think about how to combine cards, will have
 # to switch to BACK.BLACK, add spacing (allow user to specify? allow to be negative?)
 # and then will have to concatenate card layers with each other, before __str__ method
-full_deck = [(face, suit) for face in faces for suit in suits]
+FULL_DECK = [(face, suit) for face in FACES for suit in SUITS]
 
 if __name__ == "__main__":
-    for face, suit in full_deck:
+    for face, suit in FULL_DECK:
         print(cards.Card(face, suit))
