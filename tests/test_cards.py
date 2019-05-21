@@ -1,6 +1,6 @@
 """Test the Card and Deck classes"""
 
-from playing_cards_terminal.cards import Card
+from TerminalPlayingCards.cards import Card
 
 
 def test_card_str_value():
