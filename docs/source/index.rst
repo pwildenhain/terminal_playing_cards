@@ -15,9 +15,6 @@ Checkout how the cards look in the terminal::
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-
 
 Indices and tables
 ==================
