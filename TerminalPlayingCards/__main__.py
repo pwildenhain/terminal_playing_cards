@@ -1,6 +1,6 @@
 """Playground for testing module, this file will eventually be deleted"""
 
-from playing_cards_terminal import cards, cards_config
+from TerminalPlayingCards import cards, cards_config
 
 SUITS = cards_config.SUIT_SYMBOL_DICT.keys()
 # faces = card_config.CARD_FACE_DICT.keys()

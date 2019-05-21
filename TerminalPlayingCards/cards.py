@@ -1,7 +1,7 @@
 """Create Card and Deck classes as well as module variables for card printing"""
 
 from colorama import init
-from playing_cards_terminal.cards_config import SUIT_SYMBOL_DICT, CARD_FACE_DICT
+from TerminalPlayingCards.cards_config import SUIT_SYMBOL_DICT, CARD_FACE_DICT
 
 # Change the color back to default after each print
 # Prevents user input from being colored
