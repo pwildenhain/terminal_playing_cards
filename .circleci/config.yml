@@ -17,6 +17,7 @@ jobs:
           name: install dependencies
           command: |
             sudo pip install pipenv
+            sudo pip install codecov
             pipenv install --dev
       # Step 3: cache dependencies
       - save_cache:
@@ -30,7 +31,14 @@ jobs:
           name: run tests
           command: |
             mkdir -p test-results/pytest
-            pipenv run pytest -v --junit-xml=test-results/pytest/results.xml
-            pipenv run pylint playing_cards_terminal --exit-zero
+            pipenv run pytest -v --junit-xml=test-results/pytest/results.xml --cov=./
+            pipenv run coverage html
+            pipenv run pylint TerminalPlayingCards --exit-zero
       - store_test_results:
           path: test-results
+      - store_artifacts:
+          path: htmlcov
+      # Step 5: post results to codecov
+      - run:
+          name: post to codecov
+          command: codecov
