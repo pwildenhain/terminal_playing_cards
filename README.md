@@ -1,6 +1,6 @@
 # TerminalPlayingCards
 
-[![CircleCI](https://circleci.com/gh/pwildenhain/playing-cards-terminal/tree/master.svg?style=shield)](https://circleci.com/gh/pwildenhain/playing-cards-terminal/tree/master)
+[![CircleCI](https://circleci.com/gh/pwildenhain/TerminalPlayingCards.svg?style=shield)](https://circleci.com/gh/pwildenhain/TerminalPlayingCards)
 [![Documentation Status](https://readthedocs.org/projects/terminalplayingcards/badge/?version=latest)](https://terminalplayingcards.readthedocs.io/en/latest/?badge=latest)
 [![codecov](https://codecov.io/gh/pwildenhain/TerminalPlayingCards/branch/master/graph/badge.svg)](https://codecov.io/gh/pwildenhain/TerminalPlayingCards)
 
