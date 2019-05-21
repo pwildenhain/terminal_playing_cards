@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: circleci/python:3.7
 
-    working_directory: ~/playing-cards-terminal
+    working_directory: ~/TerminalPlayingCards
 
     steps:
       # Step 1: obtain repo from GitHub
