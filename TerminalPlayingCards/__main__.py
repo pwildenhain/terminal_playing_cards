@@ -1,9 +1,9 @@
 """Playground for testing module, this file will eventually be deleted"""
 
-from TerminalPlayingCards import cards, cards_config
+from TerminalPlayingCards import cards, config
 
-SUITS = cards_config.SUIT_SYMBOL_DICT.keys()
-# faces = card_config.CARD_FACE_DICT.keys()
+SUITS = config.SUIT_SYMBOL_DICT.keys()
+# faces = config.CARD_FACE_DICT.keys()
 FACES = ["A"]
 # Going to need a hand_grid variable for printing out the entire hand
 # Will be interesting to think about how to combine cards, will have
