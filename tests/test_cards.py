@@ -18,4 +18,3 @@ def test_card_str_value():
 
     for real_card, test_card in test_pairs:
         assert str(real_card) == test_card
-
