@@ -58,10 +58,13 @@ class Card:
         return self.style + card_str
 
     def __eq__(self, other_card):
-        """Compare equality against another card object"""
-        same_card = self.face == other_card.face and self.symbol == other_card.symbol
-        return same_card
+        """Compare value equality against another card object"""
+        return self.value == other_card.value
 
     def __lt__(self, other_card):
-        """Compare inequality against another card object"""
+        """Compare value inequality against another card object"""
         return self.value < other_card.value
+
+    def same(self, other_card):
+        """See if a card has the same face and suit as another card"""
+        return self.face == other_card.face and self.symbol == other_card.symbol
