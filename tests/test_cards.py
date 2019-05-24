@@ -18,3 +18,12 @@ def test_card_str_value():
 
     for real_card, test_card in test_pairs:
         assert str(real_card) == test_card
+
+
+def test_card_equality():
+    """Ensure that the same cards are equal and different cards are not equal. Also ensure that card value has nothing to do with equality"""
+    five_diamonds_1 = Card("5", "diamonds", value=1)
+    five_diamonds_2 = Card("5", "diamonds", value=2)
+    six_diamonds = Card("6", "diamonds", value=3)
+    assert five_diamonds_1 == five_diamonds_2
+    assert five_diamonds_1 != six_diamonds

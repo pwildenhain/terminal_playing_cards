@@ -1,5 +1,6 @@
 """Create Card and Deck classes as well as module variables for card printing"""
 
+from functools import total_ordering
 from colorama import init
 from TerminalPlayingCards.config import SUIT_SYMBOL_DICT, CARD_FACE_DICT
 
@@ -8,6 +9,7 @@ from TerminalPlayingCards.config import SUIT_SYMBOL_DICT, CARD_FACE_DICT
 init(autoreset=True)
 
 
+@total_ordering
 class Card:
     """A playing card in a standard deck"""
 
@@ -54,3 +56,12 @@ class Card:
             card_str += "\n" + "".join(card_grid_plan[layer])
 
         return self.style + card_str
+
+    def __eq__(self, other_card):
+        """Compare equality against another card object"""
+        same_card = self.face == other_card.face and self.symbol == other_card.symbol
+        return same_card
+
+    def __lt__(self, other_card):
+        """Compare inequality against another card object"""
+        return self.value < other_card.value
