@@ -11,9 +11,9 @@ init(autoreset=True)
 class Card:
     """A playing card in a standard deck"""
 
-    def __init__(self, face: str, suit: str):
+    def __init__(self, face: str, suit: str, value: float):
         self.face = face
-        self.value = CARD_FACE_DICT.get(face).get("value")
+        self.value = value
         self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
         self.style = SUIT_SYMBOL_DICT.get(suit).get("style")
 
