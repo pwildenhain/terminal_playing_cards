@@ -66,7 +66,7 @@ def test_card_value_inequality():
 
 def test_simple_arithmetic_with_cards():
     two_clubs = Card("2", "clubs", value=2)
-    king_spades = Card("K", "clubs", value=10)
+    king_spades = Card("K", "spades", value=10)
     assert two_clubs + king_spades == 12
     assert king_spades - two_clubs == 8
     assert two_clubs * king_spades == 20
