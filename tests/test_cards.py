@@ -73,10 +73,13 @@ def test_simple_arithmetic_with_cards():
     assert king_spades / two_clubs == 5
 
 
-def test_same_is_true_for_same_card():
-    """Cards with same face and suit are equal. Value has nothing to do with it"""
+def test_face_and_suit_equality():
+    """Cards face and suit attribute can be equal to each other. Value has nothing to do with it"""
     seven_spades_1 = Card("7", "spades", value=0)
     seven_spades_2 = Card("7", "spades", value=1)
-    seven_hearts = Card("7", "hearts", value=0)
-    assert seven_spades_1.same(seven_spades_2)
-    assert not seven_spades_1.same(seven_hearts)
+    seven_hearts = Card("7", "hearts", value=2)
+    eight_hearts = Card("8", "hearts", value=3)
+    assert seven_spades_1.same_face_and_suit(seven_spades_2)
+    assert not seven_spades_1.same_face_and_suit(seven_hearts)
+    assert seven_hearts.same_face(seven_spades_1)
+    assert eight_hearts.same_suit(seven_hearts)

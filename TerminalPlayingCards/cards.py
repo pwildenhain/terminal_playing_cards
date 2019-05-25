@@ -15,6 +15,7 @@ class Card:
 
     def __init__(self, face: str, suit: str, value: float):
         self.face = face
+        self.suit = suit
         self.value = value
         self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
         self.style = SUIT_SYMBOL_DICT.get(suit).get("style")
@@ -81,7 +82,15 @@ class Card:
         """Divide the value of Card with the value of another Card"""
         return self.value / other_card.value
 
-    def same(self, other_card):
+    def same_face(self, other_card):
+        """See if a Card has the same face as another Card"""
+        return self.face == other_card.face
+    
+    def same_suit(self, other_card):
+        """See if a Card has the same suit as another Card"""
+        return self.suit == other_card.suit
+
+    def same_face_and_suit(self, other_card):
         """See if a Card has the same face and suit as another Card"""
-        return self.face == other_card.face and self.symbol == other_card.symbol
+        return self.same_face(other_card) and self.same_suit(other_card)
     
