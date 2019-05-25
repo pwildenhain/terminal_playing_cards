@@ -58,29 +58,85 @@ class Card:
 
         return self.style + card_str
 
-    def __eq__(self, other_card) -> bool:
-        """Compare value equality against another Card"""
-        return self.value == other_card.value
+    def __eq__(self, other) -> bool:
+        """Compare value equality against another Card or number"""
+        try:
+            result = self.value == other.value
+        except AttributeError:
+            result = self.value == other
+        return result
 
-    def __lt__(self, other_card) -> bool:
-        """Compare value inequality against another Card"""
-        return self.value < other_card.value
+    def __lt__(self, other) -> bool:
+        """Compare value inequality against another Card or number"""
+        try:
+            result = self.value < other.value
+        except AttributeError:
+            result = self.value < other
+        return result
 
-    def __add__(self, other_card) -> float:
-        """Add the value of Card with the value of another Card"""
-        return self.value + other_card.value
+    def __add__(self, other) -> float:
+        """Add the value of Card with the value of another Card or number"""
+        try:
+            result = self.value + other.value
+        except AttributeError:
+            result = self.value + other
+        return result
 
-    def __sub__(self, other_card) -> float:
-        """Subtract the value of Card with the value of another Card"""
-        return self.value - other_card.value
+    def __radd__(self, other) -> float:
+        """Add the value of Card with the value of another Card or number"""
+        try:
+            result = other.value + self.value
+        except AttributeError:
+            result = other + self.value
+        return result
 
-    def __mul__(self, other_card) -> float:
-        """Mulitply the value of Card with the value of another Card"""
-        return self.value * other_card.value
+    def __sub__(self, other) -> float:
+        """Subtract the value of Card with the value of another Card or number"""
+        try:
+            result = self.value - other.value
+        except AttributeError:
+            result = self.value - other
+        return result
 
-    def __truediv__(self, other_card) -> float:
-        """Divide the value of Card with the value of another Card"""
-        return self.value / other_card.value
+    def __rsub__(self, other) -> float:
+        """Subtract the value of Card with the value of another Card or number"""
+        try:
+            result = other.value - self.value
+        except AttributeError:
+            result = other - self.value
+        return result
+
+    def __mul__(self, other) -> float:
+        """Mulitply the value of Card with the value of another Card or number"""
+        try:
+            result = self.value * other.value
+        except AttributeError:
+            result = self.value * other
+        return result
+
+    def __rmul__(self, other) -> float:
+        """Mulitply the value of Card with the value of another Card or number"""
+        try:
+            result = other.value * self.value
+        except AttributeError:
+            result = other * self.value
+        return result
+
+    def __truediv__(self, other) -> float:
+        """Divide the value of Card with the value of another Card or number"""
+        try:
+            result = self.value / other.value
+        except AttributeError:
+            result = self.value / other
+        return result
+
+    def __rtruediv__(self, other) -> float:
+        """Divide the value of Card with the value of another Card or number"""
+        try:
+            result = other.value / self.value
+        except AttributeError:
+            result = other / self.value
+        return result
 
     def same_face(self, other_card) -> bool:
         """See if a Card has the same face as another Card"""

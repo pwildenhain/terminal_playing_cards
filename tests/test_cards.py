@@ -44,33 +44,52 @@ def test_card_str_value():
 
 
 def test_card_value_equality():
-    """Same cards values are equal and different cards values are not equal"""
+    """
+    Same cards values are equal and different cards values are not equal.
+    Cards values are equal to a number.
+    """
     five_diamonds_1 = Card("5", "diamonds", value=5)
     five_diamonds_2 = Card("5", "diamonds", value=5)
     six_diamonds = Card("6", "diamonds", value=6)
     assert five_diamonds_1 == five_diamonds_2
+    assert five_diamonds_2 == 5
     assert five_diamonds_1 != six_diamonds
+    assert six_diamonds != 5
 
 
 def test_card_value_inequality():
-    """Cards values can be compared against one another"""
+    """Cards values can be compared against one another and numbers"""
     queen_clubs = Card("Q", "clubs", value=12)
     jack_hearts = Card("J", "hearts", value=11)
     jack_spades = Card("J", "spades", value=11)
     ten_diamonds = Card("10", "diamonds", value=10)
     assert queen_clubs > jack_hearts
+    assert jack_hearts < 12
     assert jack_hearts >= jack_spades
+    assert jack_spades <= 11
     assert jack_spades <= jack_hearts
+    assert jack_hearts <= 11
     assert ten_diamonds < jack_hearts
+    assert jack_hearts > 10
 
 
 def test_simple_arithmetic_with_cards():
+    """Add, subtract, multiply, and divide cards by each other and numbers"""
     two_clubs = Card("2", "clubs", value=2)
     king_spades = Card("K", "spades", value=10)
     assert two_clubs + king_spades == 12
+    assert sum([two_clubs, king_spades]) == 12
+    assert two_clubs + 2 == 4
+    assert 4 + two_clubs == 6
     assert king_spades - two_clubs == 8
+    assert 10 - king_spades == 0
+    assert king_spades - 10 == 0
     assert two_clubs * king_spades == 20
+    assert 2 * two_clubs == 4
+    assert two_clubs * 2 == 4
     assert king_spades / two_clubs == 5
+    assert 4 / two_clubs == 2
+    assert two_clubs / 1 == 2
 
 
 def test_face_and_suit_equality():
