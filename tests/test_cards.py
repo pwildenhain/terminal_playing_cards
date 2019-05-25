@@ -71,3 +71,12 @@ def test_same_is_true_for_same_card():
     seven_hearts = Card("7", "hearts", value=0)
     assert seven_spades_1.same(seven_spades_2)
     assert not seven_spades_1.same(seven_hearts)
+
+
+def test_simple_arithmetic_with_cards():
+    two_clubs = Card("2", "clubs", value=2)
+    king_spades = Card("K", "clubs", value=10)
+    assert two_clubs + king_spades == 12
+    assert king_spades - two_clubs == 8
+    assert two_clubs * king_spades == 20
+    assert king_spades / two_clubs == 5

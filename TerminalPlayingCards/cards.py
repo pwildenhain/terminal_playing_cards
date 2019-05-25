@@ -58,13 +58,30 @@ class Card:
         return self.style + card_str
 
     def __eq__(self, other_card):
-        """Compare value equality against another card object"""
+        """Compare value equality against another Card"""
         return self.value == other_card.value
 
     def __lt__(self, other_card):
-        """Compare value inequality against another card object"""
+        """Compare value inequality against another Card"""
         return self.value < other_card.value
+    
+    def __add__(self, other_card):
+        """Add the value of Card with the value of another Card"""
+        return self.value + other_card.value
+    
+    def __sub__(self, other_card):
+        """Subtract the value of Card with the value of another Card"""
+        return self.value - other_card.value
+    
+    def __mul__(self, other_card):
+        """Mulitply the value of Card with the value of another Card"""
+        return self.value * other_card.value
+
+    def __truediv__(self, other_card):
+        """Divide the value of Card with the value of another Card"""
+        return self.value / other_card.value
 
     def same(self, other_card):
-        """See if a card has the same face and suit as another card"""
+        """See if a Card has the same face and suit as another Card"""
         return self.face == other_card.face and self.symbol == other_card.symbol
+    
