@@ -20,7 +20,7 @@ class Card:
         self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
         self.style = SUIT_SYMBOL_DICT.get(suit).get("style")
 
-    def _create_card_grid(self):
+    def _create_card_grid(self) -> list:
         """Create standard grid template for all playing cards"""
         card_grid = [[" " for _ in range(11)] for _ in range(7)]
         # Add extra space for ten's since the face is two characters instead of one
@@ -36,7 +36,7 @@ class Card:
         card_grid[6][10] = self.face
         return card_grid
 
-    def _plan_card_grid(self):
+    def _plan_card_grid(self) -> list:
         """Fill out the card grid according to given symbol coordinates"""
         card_grid = self._create_card_grid()
         symbol_coords = CARD_FACE_DICT.get(self.face).get("coords")
@@ -48,7 +48,7 @@ class Card:
 
         return card_grid
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Make the card look like an actual playing card"""
         card_str = ""
         card_grid_plan = self._plan_card_grid()
@@ -58,39 +58,38 @@ class Card:
 
         return self.style + card_str
 
-    def __eq__(self, other_card):
+    def __eq__(self, other_card) -> bool:
         """Compare value equality against another Card"""
         return self.value == other_card.value
 
-    def __lt__(self, other_card):
+    def __lt__(self, other_card) -> bool:
         """Compare value inequality against another Card"""
         return self.value < other_card.value
-    
-    def __add__(self, other_card):
+
+    def __add__(self, other_card) -> float:
         """Add the value of Card with the value of another Card"""
         return self.value + other_card.value
-    
-    def __sub__(self, other_card):
+
+    def __sub__(self, other_card) -> float:
         """Subtract the value of Card with the value of another Card"""
         return self.value - other_card.value
-    
-    def __mul__(self, other_card):
+
+    def __mul__(self, other_card) -> float:
         """Mulitply the value of Card with the value of another Card"""
         return self.value * other_card.value
 
-    def __truediv__(self, other_card):
+    def __truediv__(self, other_card) -> float:
         """Divide the value of Card with the value of another Card"""
         return self.value / other_card.value
 
-    def same_face(self, other_card):
+    def same_face(self, other_card) -> bool:
         """See if a Card has the same face as another Card"""
         return self.face == other_card.face
-    
-    def same_suit(self, other_card):
+
+    def same_suit(self, other_card) -> bool:
         """See if a Card has the same suit as another Card"""
         return self.suit == other_card.suit
 
-    def same_face_and_suit(self, other_card):
+    def same_face_and_suit(self, other_card) -> bool:
         """See if a Card has the same face and suit as another Card"""
         return self.same_face(other_card) and self.same_suit(other_card)
-    
