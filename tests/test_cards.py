@@ -64,15 +64,6 @@ def test_card_value_inequality():
     assert ten_diamonds < jack_hearts
 
 
-def test_same_is_true_for_same_card():
-    """Cards with same face and suit are equal. Value has nothing to do with it"""
-    seven_spades_1 = Card("7", "spades", value=0)
-    seven_spades_2 = Card("7", "spades", value=1)
-    seven_hearts = Card("7", "hearts", value=0)
-    assert seven_spades_1.same(seven_spades_2)
-    assert not seven_spades_1.same(seven_hearts)
-
-
 def test_simple_arithmetic_with_cards():
     two_clubs = Card("2", "clubs", value=2)
     king_spades = Card("K", "clubs", value=10)
@@ -80,3 +71,12 @@ def test_simple_arithmetic_with_cards():
     assert king_spades - two_clubs == 8
     assert two_clubs * king_spades == 20
     assert king_spades / two_clubs == 5
+
+
+def test_same_is_true_for_same_card():
+    """Cards with same face and suit are equal. Value has nothing to do with it"""
+    seven_spades_1 = Card("7", "spades", value=0)
+    seven_spades_2 = Card("7", "spades", value=1)
+    seven_hearts = Card("7", "hearts", value=0)
+    assert seven_spades_1.same(seven_spades_2)
+    assert not seven_spades_1.same(seven_hearts)
