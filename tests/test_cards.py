@@ -1,5 +1,6 @@
 """Test the Card class"""
 
+import pytest
 from TerminalPlayingCards.cards import Card
 
 
@@ -84,3 +85,17 @@ def test_simple_arithmetic_with_cards():
     assert king_spades - two_clubs == 8
     assert 10 - king_spades == 0
     assert king_spades - 10 == 0
+
+
+def test_card_property_getters():
+    six_diamonds = Card("6", "diamonds", 6)
+    assert six_diamonds.face == "6"
+    assert six_diamonds.suit == "diamonds"
+
+
+def test_card_throws_good_error_message():
+    """Alert the user that the face/suit they asked for does not exist"""
+    with pytest.raises(NotImplementedError):
+        Card("fake face", "spades", 0)
+    with pytest.raises(NotImplementedError):
+        Card("A", "fake suit", 0)

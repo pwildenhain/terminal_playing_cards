@@ -14,11 +14,37 @@ class Card:
     """A playing card in a standard deck"""
 
     def __init__(self, face: str, suit: str, value: float):
+        self._face = None
         self.face = face
+        self._suit = None
         self.suit = suit
         self.value = value
         self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
         self.style = SUIT_SYMBOL_DICT.get(suit).get("style")
+
+    @property
+    def face(self):
+        """Get face property of the Card"""
+        return self._face
+
+    @face.setter
+    def face(self, value):
+        if value in CARD_FACE_DICT.keys():
+            self._face = value
+        else:
+            raise NotImplementedError(f"'{value}' is not a valid face for a Card")
+
+    @property
+    def suit(self):
+        """Get suit property of the Card"""
+        return self._suit
+
+    @suit.setter
+    def suit(self, value):
+        if value in SUIT_SYMBOL_DICT.keys():
+            self._suit = value
+        else:
+            raise NotImplementedError(f"'{value}' is not a valid suit for a Card")
 
     def _create_card_grid(self) -> list:
         """Create standard grid template for all playing cards"""
