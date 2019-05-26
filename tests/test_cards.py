@@ -1,4 +1,4 @@
-"""Test the Card and Deck classes"""
+"""Test the Card class"""
 
 from TerminalPlayingCards.cards import Card
 
@@ -84,21 +84,3 @@ def test_simple_arithmetic_with_cards():
     assert king_spades - two_clubs == 8
     assert 10 - king_spades == 0
     assert king_spades - 10 == 0
-    assert two_clubs * king_spades == 20
-    assert 2 * two_clubs == 4
-    assert two_clubs * 2 == 4
-    assert king_spades / two_clubs == 5
-    assert 4 / two_clubs == 2
-    assert two_clubs / 1 == 2
-
-
-def test_face_and_suit_equality():
-    """Cards face and suit attribute can be equal to each other. Value has nothing to do with it"""
-    seven_spades_1 = Card("7", "spades", value=0)
-    seven_spades_2 = Card("7", "spades", value=1)
-    seven_hearts = Card("7", "hearts", value=2)
-    eight_hearts = Card("8", "hearts", value=3)
-    assert seven_spades_1.same_face_and_suit(seven_spades_2)
-    assert not seven_spades_1.same_face_and_suit(seven_hearts)
-    assert seven_hearts.same_face(seven_spades_1)
-    assert eight_hearts.same_suit(seven_hearts)
