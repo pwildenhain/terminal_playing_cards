@@ -13,14 +13,14 @@ init(autoreset=True)
 class Card:
     """A playing card in a standard deck"""
 
-    def __init__(self, face: str, suit: str, value: float):
+    def __init__(self, face: str, suit: str, value: float, hidden: bool = False):
         self._face = None
         self.face = face
         self._suit = None
         self.suit = suit
         self.value = value
+        self.hidden = hidden
         self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
-        self.style = SUIT_SYMBOL_DICT.get(suit).get("style")
 
     @property
     def face(self):
@@ -56,17 +56,21 @@ class Card:
 
         return card_grid
 
-    def _plan_card_grid(self) -> list:
-        """Fill out the card grid according to given symbol coordinates"""
-        card_grid = self._create_card_grid()
-        # Fill corners and center of card
+    def _populate_corners_and_center(self, card_grid: list) -> list:
+        """Decorate the corner with face and suit and the center with a picture for face cards"""
         card_grid[0][0] = self.face
         card_grid[1][0] = self.symbol
         card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
         card_grid[5][10] = self.symbol
         card_grid[6][10] = self.face
+        return card_grid
 
+    def _plan_card_grid(self) -> list:
+        """Fill out the card grid according to given symbol coordinates"""
+        card_grid = self._create_card_grid()
+        card_grid = self._populate_corners_and_center(card_grid)
         symbol_coords = CARD_FACE_DICT.get(self.face).get("coords")
+
         if not symbol_coords:
             return card_grid
 
@@ -79,11 +83,11 @@ class Card:
         """Make the card look like an actual playing card"""
         card_str = ""
         card_grid_plan = self._plan_card_grid()
-
+        style = SUIT_SYMBOL_DICT.get(self.suit).get("style")
         for layer in range(0, 7):
             card_str += "\n" + "".join(card_grid_plan[layer])
 
-        return self.style + card_str
+        return style + card_str
 
     def __eq__(self, other) -> bool:
         """Compare value equality against another Card or number"""
