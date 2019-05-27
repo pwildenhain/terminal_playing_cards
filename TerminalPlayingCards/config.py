@@ -7,6 +7,7 @@ SUIT_SYMBOL_DICT = {
     "hearts": {"symbol": u"\u2665", "style": Back.WHITE + Fore.RED},
     "clubs": {"symbol": u"\u2663", "style": Back.WHITE + Fore.BLACK},
     "spades": {"symbol": u"\u2660", "style": Back.WHITE + Fore.BLACK},
+    "none": {"symbol": " ", "style": Back.WHITE + Fore.BLACK},
 }
 
 CARD_FACE_DICT = {
@@ -48,7 +49,7 @@ CARD_FACE_DICT = {
     "J": {"picture": u"\u2694"},
     "Q": {"picture": u"\u265B"},
     "K": {"picture": u"\u265A"},
-    "JK": {"picture": u"\U0001F479"}
+    "JK": {"picture": u"\U0001F479"},
 }
 
 # Back of Card?

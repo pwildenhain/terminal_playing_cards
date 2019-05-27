@@ -39,9 +39,21 @@ def test_card_str_value():
         "     ♣    ♣ \n"
         "  ♣     ♣ 10"
     )
+    joker = Card("JK", "none", 0)
+    joker_string = (
+        "\x1b[47m\x1b[30m\n"
+        "JK          \n"
+        "            \n"
+        "            \n"
+        "     👹      \n"
+        "            \n"
+        "            \n"
+        "          JK"
+    )
     assert str(ace_spades) == ace_spades_string
     assert str(queen_hearts) == queen_hearts_string
     assert str(ten_clubs) == ten_clubs_string
+    assert str(joker) == joker_string
 
 
 def test_card_value_equality():

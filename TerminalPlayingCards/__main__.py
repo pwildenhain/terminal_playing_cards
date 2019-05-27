@@ -3,9 +3,9 @@
 from TerminalPlayingCards import card, config
 
 # SUITS = config.SUIT_SYMBOL_DICT.keys()
-FACES = config.CARD_FACE_DICT.keys()
-SUITS = ["hearts"]
-# FACES = ["A"]
+# FACES = config.CARD_FACE_DICT.keys()
+SUITS = ["none"]
+FACES = ["JK"]
 
 # Going to need a hand_grid variable for printing out the entire hand
 # Will be interesting to think about how to combine cards, will have
