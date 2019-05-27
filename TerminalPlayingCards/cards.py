@@ -49,8 +49,8 @@ class Card:
     def _create_card_grid(self) -> list:
         """Create standard grid template for all playing cards"""
         card_grid = [[" " for _ in range(11)] for _ in range(7)]
-        # Add extra space for ten's since the face is two characters instead of one
-        if self.face == "10":
+        # Add extra space if the face is two characters instead of one
+        if len(self.face) > 1:
             for layer in range(1, 6):
                 card_grid[layer].append(" ")
 

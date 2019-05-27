@@ -48,6 +48,7 @@ CARD_FACE_DICT = {
     "J": {"picture": u"\u2694"},
     "Q": {"picture": u"\u265B"},
     "K": {"picture": u"\u265A"},
+    "JK": {"picture": u"\U0001F479"}
 }
 
 # Back of Card?
