@@ -3,10 +3,10 @@
 from colorama import Fore, Back
 
 SUIT_SYMBOL_DICT = {
-    "diamonds": {"symbol": "\u2666", "style": Back.WHITE + Fore.RED},
-    "hearts": {"symbol": "\u2665", "style": Back.WHITE + Fore.RED},
-    "clubs": {"symbol": "\u2663", "style": Back.WHITE + Fore.BLACK},
-    "spades": {"symbol": "\u2660", "style": Back.WHITE + Fore.BLACK},
+    "diamonds": {"symbol": u"\u2666", "style": Back.WHITE + Fore.RED},
+    "hearts": {"symbol": u"\u2665", "style": Back.WHITE + Fore.RED},
+    "clubs": {"symbol": u"\u2663", "style": Back.WHITE + Fore.BLACK},
+    "spades": {"symbol": u"\u2660", "style": Back.WHITE + Fore.BLACK},
 }
 
 CARD_FACE_DICT = {
@@ -45,7 +45,13 @@ CARD_FACE_DICT = {
             (6, 8),
         ]
     },
-    "J": {"picture": "\u2694"},
-    "Q": {"picture": "\u265B"},
-    "K": {"picture": "\u265A"},
+    "J": {"picture": u"\u2694"},
+    "Q": {"picture": u"\u265B"},
+    "K": {"picture": u"\u265A"},
 }
+
+# Back of Card?
+# Bike
+# u"\U0001F6B2"
+# Six pointed star
+# u"\u2736"
