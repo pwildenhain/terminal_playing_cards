@@ -100,6 +100,7 @@ def test_simple_arithmetic_with_cards():
 
 
 def test_card_property_getters():
+    """Face and suit properties are able to be gotten"""
     six_diamonds = Card("6", "diamonds", 6)
     assert six_diamonds.face == "6"
     assert six_diamonds.suit == "diamonds"
