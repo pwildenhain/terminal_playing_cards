@@ -17,7 +17,7 @@ FACES = ["JK"]
 FULL_DECK = [(face, suit, 0) for face in FACES for suit in SUITS]
 
 if __name__ == "__main__":
-    #for face, suit, value in FULL_DECK:
+    # for face, suit, value in FULL_DECK:
     #    print(card.Card(face, suit, value))
     string = (
         "||       ||\n"
