@@ -2,7 +2,11 @@
 
 from functools import total_ordering
 from colorama import init
-from TerminalPlayingCards.config import SUIT_SYMBOL_DICT, CARD_FACE_DICT
+from TerminalPlayingCards.config import (
+    SUIT_SYMBOL_DICT,
+    CARD_FACE_DICT,
+    CARD_BACK_STYLE,
+)
 
 # Change the color back to default after each print
 # Prevents user input from being colored
@@ -50,14 +54,14 @@ class Card:
         """Create standard empty grid template for all playing cards"""
         card_grid = [[" " for _ in range(11)] for _ in range(7)]
         # Add extra space if the face is two characters instead of one
-        if len(self.face) > 1:
+        if len(self.face) > 1 and not self.hidden:
             for layer in range(1, 6):
                 card_grid[layer].append(" ")
 
         return card_grid
 
     def _populate_corners_and_center(self, card_grid: list) -> list:
-        """Decorate the corner with face and suit and the center with a picture for face cards"""
+        """Populate the corner with face and suit and the center with a picture for face cards"""
         card_grid[0][0] = self.face
         card_grid[1][0] = self.symbol
         card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
@@ -65,9 +69,25 @@ class Card:
         card_grid[6][10] = self.face
         return card_grid
 
+    @staticmethod
+    def _populate_back_of_card(card_grid: list) -> list:
+        """Populate the card grid with a design for the back of the card"""
+        for layer in range(7):
+            for position in [0, 1, 9, 10]:
+                card_grid[layer][position] = "|"
+
+        card_grid[2][6] = "🚲"
+        card_grid[4][6] = "🚲"
+
+        return card_grid
+
     def _plan_card_grid(self) -> list:
         """Fill out the card grid according to given symbol coordinates"""
         card_grid = self._create_card_grid()
+
+        if self.hidden:
+            return self._populate_back_of_card(card_grid)
+
         card_grid = self._populate_corners_and_center(card_grid)
         symbol_coords = CARD_FACE_DICT.get(self.face).get("coords")
 
@@ -83,7 +103,11 @@ class Card:
         """Make the card look like an actual playing card"""
         card_str = ""
         card_grid_plan = self._plan_card_grid()
-        style = SUIT_SYMBOL_DICT.get(self.suit).get("style")
+        style = (
+            SUIT_SYMBOL_DICT.get(self.suit).get("style")
+            if not self.hidden
+            else CARD_BACK_STYLE
+        )
         for layer in range(0, 7):
             card_str += "\n" + "".join(card_grid_plan[layer])
 

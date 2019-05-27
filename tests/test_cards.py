@@ -56,6 +56,29 @@ def test_card_str_value():
     assert str(joker) == joker_string
 
 
+def test_hidden_card_str_value():
+    """Make sure that a hidden prints differently"""
+    hidden_string = (
+        "\x1b[37m\x1b[100m\n"
+        "||       ||\n"
+        "||       ||\n"
+        "||    🚲  ||\n"
+        "||       ||\n"
+        "||    🚲  ||\n"
+        "||       ||\n"
+        "||       ||"
+    )
+    ace_diamonds = Card("A", "diamonds", 0, hidden=True)
+    ten_spades = Card("10", "spades", 0, hidden=True)
+    queen_hearts = Card("Q", "hearts", 0, hidden=True)
+    joker = Card("JK", "none", 0, hidden=True)
+
+    assert str(ace_diamonds) == hidden_string
+    assert str(ten_spades) == hidden_string
+    assert str(queen_hearts) == hidden_string
+    assert str(joker) == hidden_string
+
+
 def test_card_value_equality():
     """
     Same cards values are equal and different cards values are not equal.

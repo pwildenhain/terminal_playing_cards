@@ -52,8 +52,4 @@ CARD_FACE_DICT = {
     "JK": {"picture": "👹"},
 }
 
-# Back of Card?
-# Bike
-# u"\U0001F6B2"
-# Six pointed star
-# u"\u2736"
+CARD_BACK_STYLE = Fore.WHITE + Back.LIGHTBLACK_EX
