@@ -1,6 +1,6 @@
 """Playground for testing module, this file will eventually be deleted"""
 
-from TerminalPlayingCards import cards, config
+from TerminalPlayingCards import card, config
 
 # SUITS = config.SUIT_SYMBOL_DICT.keys()
 FACES = config.CARD_FACE_DICT.keys()
@@ -15,4 +15,4 @@ FULL_DECK = [(face, suit, 0) for face in FACES for suit in SUITS]
 
 if __name__ == "__main__":
     for face, suit, value in FULL_DECK:
-        print(cards.Card(face, suit, value))
+        print(card.Card(face, suit, value))
