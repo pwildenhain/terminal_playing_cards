@@ -47,24 +47,25 @@ class Card:
             raise NotImplementedError(f"'{value}' is not a valid suit for a Card")
 
     def _create_card_grid(self) -> list:
-        """Create standard grid template for all playing cards"""
+        """Create standard empty grid template for all playing cards"""
         card_grid = [[" " for _ in range(11)] for _ in range(7)]
         # Add extra space if the face is two characters instead of one
         if len(self.face) > 1:
             for layer in range(1, 6):
                 card_grid[layer].append(" ")
 
-        card_grid[0][0] = self.face
-        card_grid[1][0] = self.symbol
-        # Picture will only be added for J, Q, K
-        card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
-        card_grid[5][10] = self.symbol
-        card_grid[6][10] = self.face
         return card_grid
 
     def _plan_card_grid(self) -> list:
         """Fill out the card grid according to given symbol coordinates"""
         card_grid = self._create_card_grid()
+        # Fill corners and center of card
+        card_grid[0][0] = self.face
+        card_grid[1][0] = self.symbol
+        card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
+        card_grid[5][10] = self.symbol
+        card_grid[6][10] = self.face
+
         symbol_coords = CARD_FACE_DICT.get(self.face).get("coords")
         if not symbol_coords:
             return card_grid
