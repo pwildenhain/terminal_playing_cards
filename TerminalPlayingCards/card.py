@@ -105,7 +105,7 @@ class Card:
             result = self.value < other
         return result
 
-    def __add__(self, other) -> float:
+    def __add__(self, other) -> int:
         """Add the value of Card with the value of another Card or number"""
         try:
             result = self.value + other.value
@@ -113,7 +113,7 @@ class Card:
             result = self.value + other
         return result
 
-    def __radd__(self, other) -> float:
+    def __radd__(self, other) -> int:
         """Add the value of Card with the value of another Card or number"""
         try:
             result = other.value + self.value
@@ -121,7 +121,7 @@ class Card:
             result = other + self.value
         return result
 
-    def __sub__(self, other) -> float:
+    def __sub__(self, other) -> int:
         """Subtract the value of Card with the value of another Card or number"""
         try:
             result = self.value - other.value
@@ -129,7 +129,7 @@ class Card:
             result = self.value - other
         return result
 
-    def __rsub__(self, other) -> float:
+    def __rsub__(self, other) -> int:
         """Subtract the value of Card with the value of another Card or number"""
         try:
             result = other.value - self.value
