@@ -1,7 +1,8 @@
-"""Create Card and Deck classes as well as module variables for card printing"""
+"""Create class for representing and printing a playing card"""
 
 from functools import total_ordering
 from colorama import init
+from TerminalPlayingCards.utils import convert_layers_to_string
 from TerminalPlayingCards.config import (
     SUIT_SYMBOL_DICT,
     CARD_FACE_DICT,
@@ -99,19 +100,20 @@ class Card:
 
         return card_grid
 
-    def __str__(self) -> str:
-        """Make the card look like an actual playing card"""
-        card_str = ""
-        card_grid_plan = self._plan_card_grid()
-        style = (
+    def _get_style(self) -> str:
+        """Retrive the colorama codes for a card style"""
+        return (
             SUIT_SYMBOL_DICT.get(self.suit).get("style")
             if not self.hidden
             else CARD_BACK_STYLE
         )
-        for layer in range(0, 7):
-            card_str += "\n" + "".join(card_grid_plan[layer])
 
-        return style + card_str
+    def __str__(self) -> str:
+        """Make the card look like an actual playing card"""
+        card_grid_plan = self._plan_card_grid()
+        card_str = convert_layers_to_string(card_grid_plan)
+
+        return self._get_style() + card_str
 
     def __eq__(self, other) -> bool:
         """Compare value equality against another Card or number"""
