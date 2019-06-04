@@ -1,19 +1,13 @@
 """Playground for testing module, this file will eventually be deleted"""
 
-from TerminalPlayingCards import card, config
+from TerminalPlayingCards import card, view, config
 from colorama import init, Fore, Back
+from pprint import pprint
 
-SUITS = config.SUIT_SYMBOL_DICT.keys()
-FACES = config.CARD_FACE_DICT.keys()
-# SUITS = ["none"]
-# FACES = ["JK"]
-
-# Going to need a hand_grid variable for printing out the entire hand
-# Will be interesting to think about how to combine cards, will have
-# to switch to BACK.BLACK, add spacing (allow user to specify? allow to be negative?)
-# and then will have to concatenate card layers with each other, before __str__ method
-FULL_DECK = [(face, suit, 0) for face in FACES for suit in SUITS]
+mycards = [card.Card("A", "clubs", 0), card.Card("Q", "hearts", 0)]
+myhand = view.View(mycards)
 
 if __name__ == "__main__":
-    for face, suit, value in FULL_DECK:
-       print(card.Card(face, suit, value))
+    pprint(myhand._merge_right())
+    pprint(str(myhand))
+    print(myhand)
