@@ -115,6 +115,10 @@ class Card:
 
         return self._get_style() + card_str
 
+    def __getitem__(self, key: int) -> list:
+        """Returns the specified layer of the Card from indexing"""
+        return self._plan_card_grid()[key]  
+
     def __eq__(self, other) -> bool:
         """Compare value equality against another Card or number"""
         try:
