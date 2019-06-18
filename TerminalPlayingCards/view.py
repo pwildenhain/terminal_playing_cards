@@ -17,13 +17,14 @@ class View():
         """Merge all cards in the View to the right of each other"""
         merged_grid = []
         padding = [Style.RESET_ALL] + [" " for _ in range(padding)]
-        # right now, these are just printing on top of each other.
-        # need to figure out how to print the same layer for ALL
-        # of the cards in a View at the same time
-        for card in self.cards:
-            style = [card._get_style()]
-            for layer in card._plan_card_grid():
-                merged_grid.append(style + layer + padding)
+        
+        for layer in range(7):
+            merged_layer = []
+            for card in range(len(self.cards)):
+                card_style = [self.cards[card]._get_style()]
+                card_layer = card_style + self.cards[card][layer] + padding
+                merged_layer += card_layer
+            merged_grid.append(merged_layer)
 
         return merged_grid
 
