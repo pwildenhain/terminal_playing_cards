@@ -129,6 +129,13 @@ def test_card_property_getters():
     assert six_diamonds.suit == "diamonds"
 
 
+def test_getting_a_card_layer():
+    ten_hearts = Card("10", "hearts", 0)
+    actual_third_layer = ten_hearts[2]
+    expected_third_layer = [" ", " ", "♥", " ", " ", " ", " ", " ", "♥", " ", " ", " "]
+    assert actual_third_layer == expected_third_layer
+
+
 def test_card_throws_good_error_message():
     """Alert the user that the face/suit they asked for does not exist"""
     with pytest.raises(NotImplementedError):
