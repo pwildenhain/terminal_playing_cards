@@ -5,7 +5,7 @@ from TerminalPlayingCards.card import Card
 
 
 def test_card_str_value():
-    """Ensure the string value given the card"""
+    """Ensure the proper string value of given the card"""
     ace_spades = Card("A", "spades", value=0)
     ace_spades_string = (
         "\x1b[47m\x1b[30m\n"
@@ -130,6 +130,7 @@ def test_card_property_getters():
 
 
 def test_getting_a_card_layer():
+    """Card object is properly indexed by __getitem__"""
     ten_hearts = Card("10", "hearts", 0)
     actual_third_layer = ten_hearts[2]
     expected_third_layer = [" ", " ", "♥", " ", " ", " ", " ", " ", "♥", " ", " ", " "]
