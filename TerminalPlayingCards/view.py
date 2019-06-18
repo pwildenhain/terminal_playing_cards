@@ -1,27 +1,28 @@
 """Create class for a View of Card objects"""
 
-from TerminalPlayingCards.card import Card
-from TerminalPlayingCards.utils import convert_layers_to_string
 from colorama import Style
+from TerminalPlayingCards.utils import convert_layers_to_string
 
-class View():
+
+class View:
     """View one or more playing cards in the terminal"""
+
     def __init__(self, cards: list):
         self.cards = cards
 
     def __len__(self) -> int:
         """Return the number of cards in the View"""
         return len(self.cards)
-    
+
     def _merge_right(self, padding: int = 2) -> list:
         """Merge all cards in the View to the right of each other"""
         merged_grid = []
         padding = [Style.RESET_ALL] + [" " for _ in range(padding)]
-        
+
         for layer in range(7):
             merged_layer = []
             for card in range(len(self.cards)):
-                card_style = [self.cards[card]._get_style()]
+                card_style = [self.cards[card].get_style()]
                 card_layer = card_style + self.cards[card][layer] + padding
                 merged_layer += card_layer
             merged_grid.append(merged_layer)
