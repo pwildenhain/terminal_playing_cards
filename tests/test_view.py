@@ -1,4 +1,7 @@
 """Test the View class"""
+# Disable this pylint rule because of a conflict with @pytest.fixture
+# See: stackoverflow.com/questions/46089480/pytest-fixtures-redefining-name-from-outer-scope-pylint
+# pylint: disable=redefined-outer-name
 
 import pytest
 from TerminalPlayingCards.view import View
@@ -6,7 +9,7 @@ from TerminalPlayingCards.view import View
 
 @pytest.fixture
 def two_card_view():
-    """List of two Card objects"""
+    """View with two cards"""
     from TerminalPlayingCards.card import Card
 
     cards = [Card("A", "clubs", 0), Card("Q", "hearts", 0)]
@@ -15,6 +18,7 @@ def two_card_view():
 
 @pytest.fixture
 def five_card_view():
+    """View with five cards"""
     from TerminalPlayingCards.card import Card
 
     cards = [
@@ -30,6 +34,7 @@ def five_card_view():
 
 @pytest.fixture
 def five_card_view_sorted():
+    """View with five cards sorted by value and suit"""
     from TerminalPlayingCards.card import Card
 
     cards = [
@@ -72,6 +77,7 @@ def test_view_property_getters(two_card_view):
 
 
 def test_view_default_sort(five_card_view, five_card_view_sorted):
+    """Default sort by value then suit return the correct order"""
     five_card_view.sort()
     for card in range(5):
         assert five_card_view[card] == five_card_view_sorted[card]
@@ -79,6 +85,7 @@ def test_view_default_sort(five_card_view, five_card_view_sorted):
 
 
 def test_view_sort_by_value(five_card_view, five_card_view_sorted):
+    """Sort by value returns the correct order"""
     five_card_view.sort(sort_order=["value"], value_order="desc")
     five_card_view_sorted.sort(sort_order=["value"], value_order="desc")
     for card in range(5):
@@ -86,6 +93,7 @@ def test_view_sort_by_value(five_card_view, five_card_view_sorted):
 
 
 def test_view_sort_by_suit(five_card_view, five_card_view_sorted):
+    """Sort by suit returns the correct order"""
     suit_order = ["hearts", "spades", "diamonds", "clubs"]
     five_card_view.sort(sort_order=["suit"], suit_order=suit_order)
     five_card_view_sorted.sort(sort_order=["suit"], suit_order=suit_order)
@@ -94,6 +102,7 @@ def test_view_sort_by_suit(five_card_view, five_card_view_sorted):
 
 
 def test_view_sort_by_only_two_suit(five_card_view, five_card_view_sorted):
+    """Sort by specific suits returns the correct order for those suits"""
     suit_order = ["diamonds", "spades"]
     five_card_view.sort(sort_order=["suit"], suit_order=suit_order)
     five_card_view_sorted.sort(sort_order=["suit"], suit_order=suit_order)

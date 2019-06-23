@@ -1,4 +1,7 @@
 """Create class for a View of Card objects"""
+# Disable this pylint rule because of a conflict with black
+# See: github.com/python/black/issues/48
+# pylint: disable=bad-continuation
 
 from colorama import Style
 from TerminalPlayingCards.utils import convert_layers_to_string

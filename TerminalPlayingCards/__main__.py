@@ -1,4 +1,4 @@
-"""Playground for testing module, this file will eventually be deleted"""
+"""Playground for testing module"""
 
 from TerminalPlayingCards import card, view
 
