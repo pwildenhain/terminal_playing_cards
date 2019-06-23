@@ -111,3 +111,20 @@ def test_view_sort_by_only_two_suit(five_card_view, five_card_view_sorted):
             assert five_card_view[card].suit == five_card_view_sorted[card].suit
         else:
             continue
+
+
+def test_view_print_throws_good_error_message(two_card_view):
+    """Alert the user that the orientation/spacing they asked for does not exist""" 
+    with pytest.raises(NotImplementedError):
+        two_card_view.orientation = "vertical"
+        print(two_card_view)
+    with pytest.raises(NotImplementedError):
+        two_card_view.spacing = -1
+        print(two_card_view)
+
+def test_view_setters_throws_good_error_message(two_card_view):
+    """Alert the user that the orientation/spacing they asked for does not exist""" 
+    with pytest.raises(NotImplementedError):
+        two_card_view.orientation = "fake"
+    with pytest.raises(NotImplementedError):
+        two_card_view.spacing = -1
