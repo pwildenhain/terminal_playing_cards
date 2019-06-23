@@ -15,6 +15,9 @@ class View:
         self.merge_direction = merge_direction
         self._merge_padding = None
         self.merge_padding = merge_padding
+        # Attributes for __iter__ method
+        self._index = None
+        self._max = None
 
     @property
     def merge_direction(self):
@@ -52,18 +55,17 @@ class View:
 
     def __iter__(self):
         """Prepare the View for iteration"""
-        self.index = 0
-        self.max = len(self)
+        self._index = 0
+        self._max = len(self)
         return self
 
     def __next__(self):
         """Cycle through the View iterable"""
-        if self.index < self.max:
-            card = self.cards[self.index]
-            self.index += 1
+        if self._index < self._max:
+            card = self.cards[self._index]
+            self._index += 1
             return card
-        else:
-            raise StopIteration
+        raise StopIteration
 
     def _merge_right(self) -> list:
         """Merge all cards in the View to the right of each other"""
@@ -123,6 +125,12 @@ class View:
                 continue
             for card in cards_by_suit:
                 sorted_cards.append(card)
+                unsorted_cards.remove(card)
+
+        # Tack on any remaining cards not specified in the order
+        sorted_cards = (
+            sorted_cards if not unsorted_cards else sorted_cards + unsorted_cards
+        )
 
         return sorted_cards
 
