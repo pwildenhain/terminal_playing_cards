@@ -10,42 +10,42 @@ from TerminalPlayingCards.utils import convert_layers_to_string
 class View:
     """View one or more playing cards in the terminal"""
 
-    def __init__(
-        self, cards: list, merge_direction: str = "right", merge_padding: int = 2
-    ):
+    def __init__(self, cards: list, orientation: str = "horizontal", spacing: int = 2):
         self.cards = cards
-        self._merge_direction = None
-        self.merge_direction = merge_direction
-        self._merge_padding = None
-        self.merge_padding = merge_padding
+        self._orientation = None
+        self.orientation = orientation
+        self._spacing = None
+        self.spacing = spacing
         # Attributes for __iter__ method
         self._index = None
         self._max = None
 
     @property
-    def merge_direction(self):
-        """Get the merge direction of the View"""
-        return self._merge_direction
+    def orientation(self):
+        """Get the orientation of the View"""
+        return self._orientation
 
-    @merge_direction.setter
-    def merge_direction(self, direction: str):
-        if direction in ["right", "left", "up", "down"]:
-            self._merge_direction = direction
-        else:
-            raise NotImplementedError(f"The View class cannot merge cards {direction}")
-
-    @property
-    def merge_padding(self):
-        "Get the amount of padding between cards in the View"
-        return self._merge_padding
-
-    @merge_padding.setter
-    def merge_padding(self, padding: int):
-        if padding > 0:
-            self._merge_padding = padding
+    @orientation.setter
+    def orientation(self, orientation: str):
+        if orientation in ["horizontal", "vertical"]:
+            self._orientation = orientation
         else:
             raise NotImplementedError(
-                "The View class cannot have merge padding less than zero"
+                f"The View class cannot place cards {orientation}ly"
+            )
+
+    @property
+    def spacing(self):
+        "Get the amount of spacing between cards in the View"
+        return self._spacing
+
+    @spacing.setter
+    def spacing(self, spacing: int):
+        if spacing > 0:
+            self._spacing = spacing
+        else:
+            raise NotImplementedError(
+                "The View class cannot have spacing less than zero"
             )
 
     def __len__(self) -> int:
@@ -70,36 +70,30 @@ class View:
             return card
         raise StopIteration
 
-    def _merge_right(self) -> list:
-        """Merge all cards in the View to the right of each other"""
+    def _merge_horizontal(self) -> list:
+        """Merge all cards in the View horizontally"""
         merged_grid = []
-        padding = [Style.RESET_ALL] + [" " for _ in range(self._merge_padding)]
+        spacing = [Style.RESET_ALL] + [" " for _ in range(self._spacing)]
 
         for layer in range(7):
             merged_layer = []
             for card in self:
                 card_style = [card.get_style()]
-                card_layer = card_style + card[layer] + padding
+                card_layer = card_style + card[layer] + spacing
                 merged_layer += card_layer
             merged_grid.append(merged_layer)
 
         return merged_grid
 
-    def _merge_left(self) -> list:
-        """Merge all cards in the View to the left of each other"""
-        pass
-
-    def _merge_up(self) -> list:
-        """Merge all cards in the View over each other"""
-        pass
-
-    def _merge_down(self) -> list:
-        """Merge all cards in the View on top of each other"""
-        pass
+    def _merge_vertical(self) -> list:
+        """Merge all cards in the View vertically"""
+        raise NotImplementedError(
+            "Vertical orientation is not implemented for the View class"
+        )
 
     def __str__(self):
         """Make the view look like a collection of playing cards"""
-        merge_fx = getattr(self, f"_merge_{self._merge_direction}")
+        merge_fx = getattr(self, f"_merge_{self._orientation}")
         # Merge playing cards in desired direction
         merged_cards = merge_fx()
         return convert_layers_to_string(merged_cards)

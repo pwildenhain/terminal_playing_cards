@@ -69,11 +69,11 @@ def test_view_has_correct_length(two_card_view):
 
 
 def test_view_property_getters(two_card_view):
-    """View merge direction and padding can be gotten"""
-    two_card_view.merge_direction = "left"
-    two_card_view.merge_padding = 3
-    assert two_card_view.merge_direction == "left"
-    assert two_card_view.merge_padding == 3
+    """View orientation and spacing can be gotten"""
+    two_card_view.orientation = "vertical"
+    two_card_view.spacing = 3
+    assert two_card_view.orientation == "vertical"
+    assert two_card_view.spacing == 3
 
 
 def test_view_default_sort(five_card_view, five_card_view_sorted):
