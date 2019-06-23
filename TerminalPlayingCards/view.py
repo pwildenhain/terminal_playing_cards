@@ -46,6 +46,25 @@ class View:
         """Return the number of cards in the View"""
         return len(self.cards)
 
+    def __getitem__(self, key: int) -> list:
+        """Returns the specified Card from it's index in the View"""
+        return self.cards[key]
+
+    def __iter__(self):
+        """Prepare the View for iteration"""
+        self.index = 0
+        self.max = len(self)
+        return self
+
+    def __next__(self):
+        """Cycle through the View iterable"""
+        if self.index < self.max:
+            card = self.cards[self.index]
+            self.index += 1
+            return card
+        else:
+            raise StopIteration
+
     def _merge_right(self) -> list:
         """Merge all cards in the View to the right of each other"""
         merged_grid = []
@@ -53,9 +72,9 @@ class View:
 
         for layer in range(7):
             merged_layer = []
-            for card in range(len(self.cards)):
-                card_style = [self.cards[card].get_style()]
-                card_layer = card_style + self.cards[card][layer] + padding
+            for card in self:
+                card_style = [card.get_style()]
+                card_layer = card_style + card[layer] + padding
                 merged_layer += card_layer
             merged_grid.append(merged_layer)
 
@@ -112,13 +131,14 @@ class View:
     ) -> None:
         """Sort the cards in the View"""
         # Set default arguments
-        sort_order = ["suit", "value"] if not sort_order else sort_order
-        value_order = "asc" if not value_order else value_order
+        sort_order = ["value", "suit"] if not sort_order else sort_order
         suit_order = (
             ["clubs", "diamonds", "spades", "hearts", "none"]
             if not suit_order
             else suit_order
         )
+        value_order = "asc" if not value_order else value_order
+
         for sort_option in sort_order:
             sort_fx = getattr(self, f"_sort_by_{sort_option}")
             order_params = locals().get(f"{sort_option}_order")
