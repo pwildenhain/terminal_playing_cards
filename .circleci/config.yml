@@ -31,7 +31,7 @@ jobs:
           name: run tests
           command: |
             mkdir -p test-results/pytest
-            pipenv run pytest -v --junit-xml=test-results/pytest/results.xml --cov=./
+            pipenv run pytest -v --junit-xml=test-results/pytest/results.xml --cov
             pipenv run coverage html
             pipenv run pylint TerminalPlayingCards --exit-zero
       - store_test_results:
