@@ -26,7 +26,7 @@ class View:
         return self._orientation
 
     @orientation.setter
-    def orientation(self, orientation: str):
+    def orientation(self, orientation):
         if orientation in ["horizontal", "vertical"]:
             self._orientation = orientation
         else:
@@ -40,7 +40,7 @@ class View:
         return self._spacing
 
     @spacing.setter
-    def spacing(self, spacing: int):
+    def spacing(self, spacing):
         if spacing > 0:
             self._spacing = spacing
         else:
@@ -48,11 +48,11 @@ class View:
                 "The View class cannot have spacing less than zero"
             )
 
-    def __len__(self) -> int:
+    def __len__(self):
         """Return the number of cards in the View"""
         return len(self.cards)
 
-    def __getitem__(self, key: int) -> list:
+    def __getitem__(self, key):
         """Returns the specified Card from it's index in the View"""
         return self.cards[key]
 
