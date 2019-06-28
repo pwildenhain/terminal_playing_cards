@@ -11,4 +11,5 @@ Full Documentation here: https://pwildenhain.github.io/TerminalPlayingCards
 
 A little taste 🍰 of what is to come
 
-![](source/_static/screenshot.png)
+![](_static/screenshot.png)
+![](docs/source/_static/screenshot.png)
