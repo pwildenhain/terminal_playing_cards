@@ -10,4 +10,4 @@ _PACKAGE UNDER DEVELOPMENT_
 
 Here is a little taste :cake: of what is to come
 
-![](screenshot.png)
+![](docs/source/_static/screenshot.png)
