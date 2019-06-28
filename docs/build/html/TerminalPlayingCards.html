@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>TerminalPlayingCards package &#8212; TerminalPlayingCards 0.0.0.9000 documentation</title>
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  
+   
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TerminalPlayingCards 0.0.0.9000 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Contents</h2>
+    <div class="sidebar-localtoc">
+      <ul>
+<li><a class="reference internal" href="#">TerminalPlayingCards package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-TerminalPlayingCards.card">TerminalPlayingCards.card module</a></li>
+<li><a class="reference internal" href="#module-TerminalPlayingCards.config">TerminalPlayingCards.config module</a></li>
+<li><a class="reference internal" href="#module-TerminalPlayingCards.utils">TerminalPlayingCards.utils module</a></li>
+<li><a class="reference internal" href="#module-TerminalPlayingCards.view">TerminalPlayingCards.view module</a></li>
+<li><a class="reference internal" href="#module-TerminalPlayingCards">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/TerminalPlayingCards.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>TerminalPlayingCards package</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="terminalplayingcards-package">
+<h1>TerminalPlayingCards package<a class="headerlink" href="#terminalplayingcards-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-TerminalPlayingCards.card">
+<span id="terminalplayingcards-card-module"></span><h2>TerminalPlayingCards.card module<a class="headerlink" href="#module-TerminalPlayingCards.card" title="Permalink to this headline">¶</a></h2>
+<p>Create class for representing and printing a playing card</p>
+<dl class="class">
+<dt id="TerminalPlayingCards.card.Card">
+<em class="property">class </em><code class="sig-prename descclassname">TerminalPlayingCards.card.</code><code class="sig-name descname">Card</code><span class="sig-paren">(</span><em class="sig-param">face: str</em>, <em class="sig-param">suit: str</em>, <em class="sig-param">value: float</em>, <em class="sig-param">hidden: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#TerminalPlayingCards.card.Card" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A playing card in a standard deck</p>
+<dl class="method">
+<dt id="TerminalPlayingCards.card.Card.face">
+<em class="property">property </em><code class="sig-name descname">face</code><a class="headerlink" href="#TerminalPlayingCards.card.Card.face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get face property of the Card</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TerminalPlayingCards.card.Card.get_style">
+<code class="sig-name descname">get_style</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#TerminalPlayingCards.card.Card.get_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrive the colorama codes for a card style</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TerminalPlayingCards.card.Card.suit">
+<em class="property">property </em><code class="sig-name descname">suit</code><a class="headerlink" href="#TerminalPlayingCards.card.Card.suit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get suit property of the Card</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-TerminalPlayingCards.config">
+<span id="terminalplayingcards-config-module"></span><h2>TerminalPlayingCards.config module<a class="headerlink" href="#module-TerminalPlayingCards.config" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-TerminalPlayingCards.utils">
+<span id="terminalplayingcards-utils-module"></span><h2>TerminalPlayingCards.utils module<a class="headerlink" href="#module-TerminalPlayingCards.utils" title="Permalink to this headline">¶</a></h2>
+<p>Common utility functions shared across classes</p>
+<dl class="function">
+<dt id="TerminalPlayingCards.utils.convert_layers_to_string">
+<code class="sig-prename descclassname">TerminalPlayingCards.utils.</code><code class="sig-name descname">convert_layers_to_string</code><span class="sig-paren">(</span><em class="sig-param">layers: list</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#TerminalPlayingCards.utils.convert_layers_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given Card or View layers, convert the grid layers to a string</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-TerminalPlayingCards.view">
+<span id="terminalplayingcards-view-module"></span><h2>TerminalPlayingCards.view module<a class="headerlink" href="#module-TerminalPlayingCards.view" title="Permalink to this headline">¶</a></h2>
+<p>Create class for a View of Card objects</p>
+<dl class="class">
+<dt id="TerminalPlayingCards.view.View">
+<em class="property">class </em><code class="sig-prename descclassname">TerminalPlayingCards.view.</code><code class="sig-name descname">View</code><span class="sig-paren">(</span><em class="sig-param">cards: list</em>, <em class="sig-param">orientation: str = 'horizontal'</em>, <em class="sig-param">spacing: int = 2</em><span class="sig-paren">)</span><a class="headerlink" href="#TerminalPlayingCards.view.View" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>View one or more playing cards in the terminal</p>
+<dl class="method">
+<dt id="TerminalPlayingCards.view.View.orientation">
+<em class="property">property </em><code class="sig-name descname">orientation</code><a class="headerlink" href="#TerminalPlayingCards.view.View.orientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the orientation of the View</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TerminalPlayingCards.view.View.sort">
+<code class="sig-name descname">sort</code><span class="sig-paren">(</span><em class="sig-param">sort_order: list = None</em>, <em class="sig-param">value_order: str = None</em>, <em class="sig-param">suit_order: list = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#TerminalPlayingCards.view.View.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the cards in the View</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="TerminalPlayingCards.view.View.spacing">
+<em class="property">property </em><code class="sig-name descname">spacing</code><a class="headerlink" href="#TerminalPlayingCards.view.View.spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the amount of spacing between cards in the View</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-TerminalPlayingCards">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-TerminalPlayingCards" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TerminalPlayingCards 0.0.0.9000 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2019, Paul Wildenhain. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>
