@@ -6,16 +6,7 @@
 Playing cards for the terminal
 ==============================
 
-Quickstart
-^^^^^^^^^^
-
-Checkout how the cards look in the terminal::
-
-    $ python -m TerminalPlayingCards
-
-|screenshot|
-
-.. |screenshot| image:: _static/screenshot.png
+.. mdinclude:: ../../README.md
 
 .. toctree::
    :maxdepth: 2

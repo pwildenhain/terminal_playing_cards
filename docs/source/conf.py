@@ -32,8 +32,13 @@ extensions = [
     # Automatic generation of docs based on docstrings
     'sphinx.ext.autodoc',
     # Google-style docstrings
-    'sphinx.ext.napoleon'
+    'sphinx.ext.napoleon',
+    # Convert .md to .rst
+    'm2r'
 ]
+
+# Recognize .md files as well as .rst
+source_suffix = ['.rst', '.md']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
