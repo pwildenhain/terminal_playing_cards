@@ -1,5 +1,7 @@
 """Create class for representing and printing a playing card"""
-
+# Ignore concerns about docstrings, since _all_ methods with docstrings
+# are picked up by sphinx-autodoc
+# pylint: disable=missing-docstring
 from functools import total_ordering
 from colorama import init
 from TerminalPlayingCards.utils import convert_layers_to_string

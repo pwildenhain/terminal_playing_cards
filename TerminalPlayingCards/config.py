@@ -1,5 +1,6 @@
-""""All global configuration options for a the Card class"""
-
+# Ignore concerns about docstrings, since _all_ methods with docstrings
+# are picked up by sphinx-autodoc
+# pylint: disable=missing-docstring
 from colorama import Fore, Back
 
 SUIT_SYMBOL_DICT = {

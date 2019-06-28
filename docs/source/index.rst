@@ -13,6 +13,10 @@ Checkout how the cards look in the terminal::
 
     $ python -m TerminalPlayingCards
 
+|screenshot|
+
+.. |screenshot| image:: _static/screenshot.png
+
 .. toctree::
    :maxdepth: 2
 
