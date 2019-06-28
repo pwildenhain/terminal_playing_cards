@@ -7,4 +7,8 @@ Python 📦 for playing card games in the terminal
 
 _PACKAGE UNDER DEVELOPMENT_
 
-Here is a little taste 🍰 of what is to come: https://pwildenhain.github.io/TerminalPlayingCards
+Full Documentation here: https://pwildenhain.github.io/TerminalPlayingCards
+
+A little taste 🍰 of what is to come
+
+![](source/_static/screenshot.png)
