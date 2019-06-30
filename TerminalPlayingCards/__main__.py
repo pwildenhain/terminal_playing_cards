@@ -3,12 +3,12 @@
 from TerminalPlayingCards import card, view
 
 MY_CARDS = [
-    card.Card("2", "clubs", value=2),
-    card.Card("Q", "hearts", value=12),
-    card.Card("A", "clubs", value=1),
-    card.Card("K", "spades", value=13),
-    card.Card("2", "diamonds", value=2),
-    card.Card("J", "spades", value=11),
+    card.Card("2", "clubs"),
+    card.Card("Q", "hearts"),
+    card.Card("A", "clubs"),
+    card.Card("K", "spades"),
+    card.Card("2", "diamonds"),
+    card.Card("J", "spades"),
 ]
 
 MY_HAND = view.View(MY_CARDS)

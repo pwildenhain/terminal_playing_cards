@@ -20,7 +20,7 @@ init(autoreset=True)
 class Card:
     """A playing card in a standard deck"""
 
-    def __init__(self, face: str, suit: str, value: float, hidden: bool = False):
+    def __init__(self, face: str, suit: str, value: int = 0, hidden: bool = False):
         self._face = None
         self.face = face
         self._suit = None

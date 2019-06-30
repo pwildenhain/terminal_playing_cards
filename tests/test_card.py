@@ -6,7 +6,7 @@ from TerminalPlayingCards.card import Card
 
 def test_card_str_value():
     """Ensure the proper string value of given the card"""
-    ace_spades = Card("A", "spades", value=0)
+    ace_spades = Card("A", "spades")
     ace_spades_string = (
         "\x1b[47m\x1b[30m\n"
         "A          \n"
@@ -17,7 +17,7 @@ def test_card_str_value():
         "          ♠\n"
         "          A"
     )
-    queen_hearts = Card("Q", "hearts", value=0)
+    queen_hearts = Card("Q", "hearts")
     queen_hearts_string = (
         "\x1b[47m\x1b[31m\n"
         "Q          \n"
@@ -28,7 +28,7 @@ def test_card_str_value():
         "          ♥\n"
         "          Q"
     )
-    ten_clubs = Card("10", "clubs", value=0)
+    ten_clubs = Card("10", "clubs")
     ten_clubs_string = (
         "\x1b[47m\x1b[30m\n"
         "10 ♣     ♣  \n"
@@ -39,7 +39,7 @@ def test_card_str_value():
         "     ♣    ♣ \n"
         "  ♣     ♣ 10"
     )
-    joker = Card("JK", "none", 0)
+    joker = Card("JK", "none")
     joker_string = (
         "\x1b[47m\x1b[30m\n"
         "JK          \n"
@@ -68,10 +68,10 @@ def test_hidden_card_str_value():
         "||       ||\n"
         "||       ||"
     )
-    ace_diamonds = Card("A", "diamonds", 0, hidden=True)
-    ten_spades = Card("10", "spades", 0, hidden=True)
-    queen_hearts = Card("Q", "hearts", 0, hidden=True)
-    joker = Card("JK", "none", 0, hidden=True)
+    ace_diamonds = Card("A", "diamonds", hidden=True)
+    ten_spades = Card("10", "spades", hidden=True)
+    queen_hearts = Card("Q", "hearts", hidden=True)
+    joker = Card("JK", "none", hidden=True)
 
     assert str(ace_diamonds) == hidden_string
     assert str(ten_spades) == hidden_string
@@ -131,7 +131,7 @@ def test_card_property_getters():
 
 def test_getting_a_card_layer():
     """Card object is properly indexed by __getitem__"""
-    ten_hearts = Card("10", "hearts", 0)
+    ten_hearts = Card("10", "hearts")
     actual_third_layer = ten_hearts[2]
     expected_third_layer = [" ", " ", "♥", " ", " ", " ", " ", " ", "♥", " ", " ", " "]
     assert actual_third_layer == expected_third_layer
@@ -140,6 +140,6 @@ def test_getting_a_card_layer():
 def test_card_throws_good_error_message():
     """Alert the user that the face/suit they asked for does not exist"""
     with pytest.raises(NotImplementedError):
-        Card("fake face", "spades", 0)
+        Card("fake face", "spades")
     with pytest.raises(NotImplementedError):
-        Card("A", "fake suit", 0)
+        Card("A", "fake suit")
