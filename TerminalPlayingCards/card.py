@@ -27,7 +27,7 @@ class Card:
         self.suit = suit
         self.value = value
         self.hidden = hidden
-        self.symbol = SUIT_SYMBOL_DICT.get(suit).get("symbol")
+        self.symbol = SUIT_SYMBOL_DICT.get(suit.lower()).get("symbol")
 
     @property
     def face(self):
@@ -36,6 +36,7 @@ class Card:
 
     @face.setter
     def face(self, value):
+        value = value.upper()
         if value in CARD_FACE_DICT.keys():
             self._face = value
         else:
@@ -48,6 +49,7 @@ class Card:
 
     @suit.setter
     def suit(self, value):
+        value = value.lower()
         if value in SUIT_SYMBOL_DICT.keys():
             self._suit = value
         else:
