@@ -21,22 +21,14 @@ init(autoreset=True)
 class Card:
     """A playing card in a standard deck"""
 
-    def __init__(
-        self,
-        face: str,
-        suit: str,
-        value: int = 0,
-        hidden: bool = False,
-        picture: bool = True,
-    ):
+    def __init__(self, face: str, suit: str, value: int = 0, **kwargs: bool):
         self._face = None
         self.face = face
         self._suit = None
         self.suit = suit
         self.value = value
-        self.hidden = hidden
-        self.picture = picture
-        self.symbol = SUIT_SYMBOL_DICT.get(suit.lower()).get("symbol")
+        self.hidden = kwargs.get("hidden", False)
+        self.picture = kwargs.get("picture", True)
 
     @property
     def face(self):
@@ -76,11 +68,12 @@ class Card:
 
     def _populate_corners_and_center(self, card_grid: list) -> list:
         """Populate the corner with face and suit and the center with a picture for face cards"""
+        symbol = SUIT_SYMBOL_DICT.get(self.suit).get("symbol")
         card_grid[0][0] = self.face
-        card_grid[1][0] = self.symbol
+        card_grid[1][0] = symbol
         if self.picture:
             card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
-        card_grid[5][10] = self.symbol
+        card_grid[5][10] = symbol
         card_grid[6][10] = self.face
         return card_grid
 
@@ -110,7 +103,7 @@ class Card:
             return card_grid
 
         for layer, position in symbol_coords:
-            card_grid[layer][position] = self.symbol
+            card_grid[layer][position] = SUIT_SYMBOL_DICT.get(self.suit).get("symbol")
 
         return card_grid
 
