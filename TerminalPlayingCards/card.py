@@ -114,7 +114,7 @@ class Card:
 
         return card_grid
 
-    def get_style(self) -> str:
+    def _get_style(self) -> str:
         """Retrive the colorama codes for a card style"""
         return (
             SUIT_SYMBOL_DICT.get(self.suit).get("style")
@@ -127,11 +127,14 @@ class Card:
         card_grid_plan = self._plan_card_grid()
         card_str = convert_layers_to_string(card_grid_plan)
 
-        return self.get_style() + card_str
+        return self._get_style() + card_str
 
     def __repr__(self):
         """Return code used to create the Card instance"""
-        return f"Card('{self.face}', '{self.suit}', value={self.value}, hidden={self.hidden}, picture={self.picture})"
+        return (
+            f"Card('{self.face}', '{self.suit}', "
+            f"value={self.value}, hidden={self.hidden}, picture={self.picture})"
+        )
 
     def __getitem__(self, key):
         """Returns the specified layer of the Card from indexing"""

@@ -81,7 +81,9 @@ class View:
         for layer in range(7):
             merged_layer = []
             for card in self:
-                card_style = [card.get_style()]
+                # pylint: disable=protected-access
+                card_style = [card._get_style()]
+                # pylint: enable=protected-access
                 card_layer = card_style + card[layer] + spacing
                 merged_layer += card_layer
             merged_grid.append(merged_layer)
