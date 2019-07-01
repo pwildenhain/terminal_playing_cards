@@ -2,13 +2,42 @@ from typing import Union
 from TerminalPlayingCards.card import Card
 from TerminalPlayingCards.config import DEFAULT_DECK_SPEC
 
-def _build_deck(specifications: Union[list, dict] = None) -> list:
-    """Create a list of cards according to proper specifications"""
-    return Card("A", "spades", 0)
-
 class Deck:
-    def __init__(self, specifications: Union[list, dict] = None):
-        self.cards = _build_deck(specifications)
+    def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
+        spec_dict = DEFAULT_DECK_SPEC if not specifications else self._get_spec_dict(specifications)
+        self.cards = self._build(spec_dict, **kwargs)
+        # Attributes for __iter__ method
+        self._index = None
+        self._max = None
+
+    @staticmethod
+    def _get_spec_dict(specifications: Union[list, dict]):
+        """Translate Deck build specifications into a dictionary"""
+        # Early return if they are passing custom specifications
+        if type(specifications) == dict:
+            return specifications
+
+        spec_dict = DEFAULT_DECK_SPEC
+
+        if "ace_high" in specifications:
+            for suit in spec_dict.get("A"):
+                spec_dict["A"][suit] = 14
+        
+        if "face_cards_are_ten" in specifications:
+            for face_card in ["J", "Q", "K"]:
+                for suit in spec_dict.get(face_card):
+                    spec_dict[face_card][suit] = 10
+        
+        return spec_dict
+
+    @staticmethod
+    def _build(specs_dict: dict, **kwargs: bool):
+        """Build a deck of cards according to specifications"""
+        return [
+            Card(face, suit, value=specs_dict.get(face).get(suit), **kwargs)
+            for face in specs_dict.keys()
+            for suit in specs_dict.get(face).keys()
+        ]
 
     def __len__(self):
         """Return the number of cards"""
