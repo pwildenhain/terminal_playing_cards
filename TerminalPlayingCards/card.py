@@ -77,15 +77,15 @@ class Card:
         card_grid[6][10] = self.face
         return card_grid
 
-    @staticmethod
-    def _populate_back_of_card(card_grid: list) -> list:
+    def _populate_back_of_card(self, card_grid: list) -> list:
         """Populate the card grid with a design for the back of the card"""
         for layer in range(7):
             for position in [0, 1, 9, 10]:
                 card_grid[layer][position] = "|"
-
-        card_grid[2][6] = "🚲"
-        card_grid[4][6] = "🚲"
+        
+        if self.picture:
+            card_grid[2][5] = "🚲"
+            card_grid[4][5] = "🚲"
 
         return card_grid
 
