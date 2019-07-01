@@ -2,6 +2,7 @@
 # Ignore concerns about docstrings, since _all_ methods with docstrings
 # are picked up by sphinx-autodoc
 # pylint: disable=missing-docstring
+# pylint: disable=bad-continuation
 from functools import total_ordering
 from colorama import init
 from TerminalPlayingCards.utils import convert_layers_to_string
@@ -20,13 +21,21 @@ init(autoreset=True)
 class Card:
     """A playing card in a standard deck"""
 
-    def __init__(self, face: str, suit: str, value: int = 0, hidden: bool = False):
+    def __init__(
+        self,
+        face: str,
+        suit: str,
+        value: int = 0,
+        hidden: bool = False,
+        picture: bool = True,
+    ):
         self._face = None
         self.face = face
         self._suit = None
         self.suit = suit
         self.value = value
         self.hidden = hidden
+        self.picture = picture
         self.symbol = SUIT_SYMBOL_DICT.get(suit.lower()).get("symbol")
 
     @property
@@ -69,7 +78,8 @@ class Card:
         """Populate the corner with face and suit and the center with a picture for face cards"""
         card_grid[0][0] = self.face
         card_grid[1][0] = self.symbol
-        card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
+        if self.picture:
+            card_grid[3][5] = CARD_FACE_DICT.get(self.face).get("picture", " ")
         card_grid[5][10] = self.symbol
         card_grid[6][10] = self.face
         return card_grid
@@ -121,7 +131,7 @@ class Card:
 
     def __repr__(self):
         """Return code used to create the Card instance"""
-        return f"Card('{self.face}', '{self.suit}', value={self.value}, hidden={self.hidden})"
+        return f"Card('{self.face}', '{self.suit}', value={self.value}, hidden={self.hidden}, picture={self.picture})"
 
     def __getitem__(self, key):
         """Returns the specified layer of the Card from indexing"""

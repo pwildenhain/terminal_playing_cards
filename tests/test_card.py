@@ -79,6 +79,22 @@ def test_hidden_card_str_value():
     assert str(joker) == hidden_string
 
 
+def test_face_card_no_picture_str_value():
+    queen_hearts_no_picture_string = (
+        "\x1b[47m\x1b[31m\n"
+        "Q          \n"
+        "♥          \n"
+        "           \n"
+        "           \n"
+        "           \n"
+        "          ♥\n"
+        "          Q"
+    )
+    queen_hearts_no_picture = Card("Q", "hearts", picture=False)
+
+    assert str(queen_hearts_no_picture) == queen_hearts_no_picture_string
+
+
 def test_card_value_equality():
     """
     Same cards values are equal and different cards values are not equal.
@@ -145,9 +161,11 @@ def test_card_creation_case_insensitive():
 
 def test_card_string_representation():
     two_hearts = Card("2", "hearts")
-    joker = Card("JK", suit="none", value=10, hidden=True)
-    assert repr(two_hearts) == "Card('2', 'hearts', value=0, hidden=False)"
-    assert repr(joker) == "Card('JK', 'none', value=10, hidden=True)"
+    joker = Card("JK", suit="none", value=10, hidden=True, picture=False)
+    assert (
+        repr(two_hearts) == "Card('2', 'hearts', value=0, hidden=False, picture=True)"
+    )
+    assert repr(joker) == "Card('JK', 'none', value=10, hidden=True, picture=False)"
 
 
 def test_card_throws_good_error_message():
