@@ -80,6 +80,7 @@ def test_hidden_card_str_value():
 
 
 def test_face_card_no_picture_str_value():
+    """Picture can be removed from face cards"""
     queen_hearts_no_picture_string = (
         "\x1b[47m\x1b[31m\n"
         "Q          \n"
@@ -154,12 +155,14 @@ def test_getting_a_card_layer():
 
 
 def test_card_creation_case_insensitive():
+    """Face and suit are converted to appropriate case"""
     queen_clubs = Card("q", "CLUBS")
     assert queen_clubs.suit == "clubs"
     assert queen_clubs.face == "Q"
 
 
 def test_card_string_representation():
+    """The code used to create the card instance"""
     two_hearts = Card("2", "hearts")
     joker = Card("JK", suit="none", value=10, hidden=True, picture=False)
     assert (
