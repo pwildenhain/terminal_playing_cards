@@ -20,9 +20,6 @@ class View(Deck):
         self.orientation = orientation
         self._spacing = None
         self.spacing = spacing
-        # Attributes for __iter__ method
-        self._index = None
-        self._max = None
 
     @property
     def orientation(self):
