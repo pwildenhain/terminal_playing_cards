@@ -143,6 +143,13 @@ def test_card_creation_case_insensitive():
     assert queen_clubs.face == "Q"
 
 
+def test_card_string_representation():
+    two_hearts = Card("2", "hearts")
+    joker = Card("JK", suit="none", value=10, hidden=True)
+    assert repr(two_hearts) == "Card('2', 'hearts', value=0, hidden=False)"
+    assert repr(joker) == "Card('JK', 'none', value=10, hidden=True)"
+
+
 def test_card_throws_good_error_message():
     """Alert the user that the face/suit they asked for does not exist"""
     with pytest.raises(NotImplementedError):

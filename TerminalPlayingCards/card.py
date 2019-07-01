@@ -119,6 +119,10 @@ class Card:
 
         return self.get_style() + card_str
 
+    def __repr__(self):
+        """Return code used to create the Card instance"""
+        return f"Card('{self.face}', '{self.suit}', value={self.value}, hidden={self.hidden})"
+
     def __getitem__(self, key):
         """Returns the specified layer of the Card from indexing"""
         return self._plan_card_grid()[key]
