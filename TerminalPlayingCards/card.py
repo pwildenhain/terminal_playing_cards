@@ -82,7 +82,7 @@ class Card:
         for layer in range(7):
             for position in [0, 1, 9, 10]:
                 card_grid[layer][position] = "|"
-        
+
         if self.picture:
             card_grid[2][5] = "🚲"
             card_grid[4][5] = "🚲"

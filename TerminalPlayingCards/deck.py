@@ -1,3 +1,4 @@
+"""Create a class for a deck of playing cards"""
 # pylint: disable=bad-continuation
 
 from typing import Union
@@ -7,6 +8,7 @@ from TerminalPlayingCards.config import DEFAULT_DECK_SPEC
 
 
 class Deck:
+    """Deck of playing cards"""
     def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
         spec_dict = (
             DEFAULT_DECK_SPEC
@@ -22,7 +24,7 @@ class Deck:
     def _get_spec_dict(specifications: Union[list, dict]):
         """Translate Deck build specifications into a dictionary"""
         # Early return if they are passing custom specifications
-        if type(specifications) == dict:
+        if isinstance(specifications, dict):
             return specifications
 
         spec_dict = DEFAULT_DECK_SPEC
@@ -75,6 +77,7 @@ class Deck:
         raise StopIteration
 
     def pop(self, index: int = 0):
+        """Pop a card out of the Deck"""
         return self.cards.pop(index)
 
     @staticmethod
