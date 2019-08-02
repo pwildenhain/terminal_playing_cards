@@ -1,10 +1,18 @@
+# pylint: disable=bad-continuation
+
 from typing import Union
+from random import shuffle
 from TerminalPlayingCards.card import Card
 from TerminalPlayingCards.config import DEFAULT_DECK_SPEC
 
+
 class Deck:
     def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
-        spec_dict = DEFAULT_DECK_SPEC if not specifications else self._get_spec_dict(specifications)
+        spec_dict = (
+            DEFAULT_DECK_SPEC
+            if not specifications
+            else self._get_spec_dict(specifications)
+        )
         self.cards = self._build(spec_dict, **kwargs)
         # Attributes for __iter__ method
         self._index = None
@@ -22,12 +30,12 @@ class Deck:
         if "ace_high" in specifications:
             for suit in spec_dict.get("A"):
                 spec_dict["A"][suit] = 14
-        
+
         if "face_cards_are_ten" in specifications:
             for face_card in ["J", "Q", "K"]:
                 for suit in spec_dict.get(face_card):
                     spec_dict[face_card][suit] = 10
-        
+
         return spec_dict
 
     @staticmethod
@@ -42,6 +50,11 @@ class Deck:
     def __len__(self):
         """Return the number of cards"""
         return len(self.cards)
+
+    def __add__(self, other):
+        """Add a Deck to another Deck"""
+        self.cards += other.cards
+        return self
 
     def __getitem__(self, key):
         """Returns the specified Card from it's index"""
@@ -114,3 +127,7 @@ class Deck:
             sort_fx = getattr(self, f"_sort_by_{sort_option}")
             order_params = locals().get(f"{sort_option}_order")
             self.cards = sort_fx(self.cards, order_params)
+
+    def shuffle(self):
+        """Shuffle the Deck in place"""
+        shuffle(self.cards)
