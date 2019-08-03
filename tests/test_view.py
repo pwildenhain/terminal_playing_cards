@@ -17,6 +17,33 @@ def two_card_view():
 
 
 @pytest.fixture
+def two_card_view_negative_spacing():
+    """View with two cards with negative spacing"""
+    from TerminalPlayingCards.card import Card
+
+    cards = [Card("A", "clubs", 0), Card("Q", "hearts", 0)]
+    return View(cards, spacing=-5)
+
+
+@pytest.fixture
+def messy_view():
+    """
+    View with four cards to cover various edge cases
+    surrounding the ten face card
+    """
+    from TerminalPlayingCards.card import Card
+
+    cards = [
+        Card("A", "clubs", hidden=True),
+        Card("10", "hearts"),
+        Card("10", "hearts", hidden=True),
+        Card("A", "clubs"),
+    ]
+
+    return View(cards, spacing=-8)
+
+
+@pytest.fixture
 def five_card_view():
     """View with five cards"""
     from TerminalPlayingCards.card import Card
@@ -61,6 +88,45 @@ def test_view_str_value(two_card_view):
         "\x1b[47m\x1b[30m          A\x1b[0m  \x1b[47m\x1b[31m          Q\x1b[0m  "
     )
     assert two_card_view_string == str(two_card_view)
+
+
+def test_negative_spaced_view(two_card_view_negative_spacing):
+    """Negative spacing places cards in correct position"""
+    two_card_view_string = (
+        "\n"
+        "\x1b[47m\x1b[30mA      \x1b[30m|\x1b[47m\x1b[31mQ          \x1b[0m\n"
+        "\x1b[47m\x1b[30m♣      \x1b[30m|\x1b[47m\x1b[31m♥          \x1b[0m\n"
+        "\x1b[47m\x1b[30m       \x1b[30m|\x1b[47m\x1b[31m           \x1b[0m\n"
+        "\x1b[47m\x1b[30m     ♣ \x1b[30m|\x1b[47m\x1b[31m     ♛     \x1b[0m\n"
+        "\x1b[47m\x1b[30m       \x1b[30m|\x1b[47m\x1b[31m           \x1b[0m\n"
+        "\x1b[47m\x1b[30m       \x1b[30m|\x1b[47m\x1b[31m          ♥\x1b[0m\n"
+        "\x1b[47m\x1b[30m       \x1b[30m|\x1b[47m\x1b[31m          Q\x1b[0m"
+    )
+
+    assert two_card_view_string == str(two_card_view_negative_spacing)
+
+
+def test_messy_view_str_value(messy_view):
+    """Messy with with ten's and hidden cards displays properly"""
+    messy_view_string = (
+        "\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m10 "
+        "♥\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30mA          \x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m♥   "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m♣          \x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m  ♥ "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m           \x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m    "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m     ♣     \x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m  ♥ "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m           \x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m    "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m          ♣\x1b[0m\n"
+        "\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[31m  ♥ "
+        "\x1b[30m|\x1b[37m\x1b[100m||  \x1b[30m|\x1b[47m\x1b[30m          A\x1b[0m"
+    )
+
+    assert messy_view_string == str(messy_view)
 
 
 def test_view_has_correct_length(two_card_view):
