@@ -6,7 +6,7 @@
 # are picked up by sphinx-autodoc
 # pylint: disable=missing-docstring
 
-from colorama import Style
+from colorama import Style, Fore
 from TerminalPlayingCards.deck import Deck
 from TerminalPlayingCards.utils import convert_layers_to_string
 
@@ -42,26 +42,44 @@ class View(Deck):
 
     @spacing.setter
     def spacing(self, spacing):
-        if spacing > 0:
+        if spacing > -11:
             self._spacing = spacing
         else:
             raise NotImplementedError(
-                "The View class cannot have spacing less than zero"
+                "The View class cannot have spacing less than -10"
             )
 
     def _merge_horizontal(self) -> list:
         """Merge all cards in the View horizontally"""
         merged_grid = []
-        spacing = [Style.RESET_ALL] + [" " for _ in range(self._spacing)]
+        positive_spacing = [" " for _ in range(self._spacing)]
 
         for layer in range(7):
             merged_layer = []
+            card_position = 0
             for card in self:
                 # pylint: disable=protected-access
                 card_style = [card._get_style()]
                 # pylint: enable=protected-access
-                card_layer = card_style + card[layer] + spacing
-                merged_layer += card_layer
+                card_layer = card_style + card[layer] + [Style.RESET_ALL]
+                if self._spacing >= 0:
+                    merged_layer += card_layer + positive_spacing
+                else:
+                    border = [Fore.BLACK, "|"] if card_position != 0 else []
+                    prev_face_is_len_two = (
+                        len(self[card_position - 1].face) == 2
+                        if card_position > 0
+                        else False
+                    )
+                    on_last_layer = layer == 6
+                    negative_spacing = (
+                        self._spacing
+                        if not (prev_face_is_len_two)
+                        or (prev_face_is_len_two and on_last_layer)
+                        else self._spacing - 1
+                    )
+                    merged_layer = merged_layer[:negative_spacing] + border + card_layer
+                    card_position += 1
             merged_grid.append(merged_layer)
 
         return merged_grid
@@ -69,7 +87,7 @@ class View(Deck):
     def _merge_vertical(self) -> list:
         """Merge all cards in the View vertically"""
         raise NotImplementedError(
-            "Vertical orientation is not implemented for the View class"
+            "Vertical orientation currently not implemented for the View class"
         )
 
     def __str__(self):

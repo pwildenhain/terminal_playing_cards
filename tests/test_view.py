@@ -128,4 +128,4 @@ def test_view_setters_throws_good_error_message(two_card_view):
     with pytest.raises(NotImplementedError):
         two_card_view.orientation = "fake"
     with pytest.raises(NotImplementedError):
-        two_card_view.spacing = -1
+        two_card_view.spacing = -11
