@@ -58,6 +58,7 @@ class View(Deck):
             merged_layer = []
             card_position = 0
             for card in self:
+                prev_card = self[card_position - 1] if card_position != 0 else DummyCard()
                 # pylint: disable=protected-access
                 card_style = [card._get_style()]
                 # pylint: enable=protected-access
@@ -66,11 +67,7 @@ class View(Deck):
                     merged_layer += card_layer + positive_spacing
                 else:
                     border = [Fore.BLACK, "|"] if card_position != 0 else []
-                    prev_face_is_len_two = (
-                        len(self[card_position - 1].face) == 2
-                        if card_position > 0
-                        else False
-                    )
+                    prev_face_is_len_two = len(prev_card.face) == 2 and not prev_card.hidden
                     on_last_layer = layer == 6
                     negative_spacing = (
                         self._spacing
@@ -96,3 +93,9 @@ class View(Deck):
         # Merge playing cards in desired direction
         merged_cards = merge_fx()
         return convert_layers_to_string(merged_cards)
+
+# Dummy object used by View to determine how to merge cards
+class DummyCard():
+        def __init__(self):
+            self.face = " "
+            self.hidden = False
