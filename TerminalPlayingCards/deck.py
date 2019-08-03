@@ -9,6 +9,7 @@ from TerminalPlayingCards.config import DEFAULT_DECK_SPEC
 
 class Deck:
     """Deck of playing cards"""
+
     def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
         spec_dict = (
             DEFAULT_DECK_SPEC
