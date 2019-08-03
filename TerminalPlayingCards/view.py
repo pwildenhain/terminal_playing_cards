@@ -13,13 +13,16 @@ from TerminalPlayingCards.utils import convert_layers_to_string
 
 class View(Deck):
     """View one or more playing cards in the terminal"""
-
+    # No need to initialize Deck when View is created. Only looking to inherit
+    # methods, not attributes
+    # pylint: disable=super-init-not-called
     def __init__(self, cards: list, orientation: str = "horizontal", spacing: int = 2):
         self.cards = cards
         self._orientation = None
         self.orientation = orientation
         self._spacing = None
         self.spacing = spacing
+    # pylint: enable=super-init-not-called
 
     @property
     def orientation(self):
@@ -100,7 +103,9 @@ class View(Deck):
 
 
 # Dummy object used by View to determine how to merge cards
+# pylint: disable=too-few-public-methods
 class DummyCard:
     def __init__(self):
         self.face = " "
         self.hidden = False
+# pylint: enable=too-few-public-methods
