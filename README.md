@@ -1,7 +1,7 @@
 # terminal_playing_cards
 
-[![CircleCI](https://circleci.com/gh/pwildenhain/TerminalPlayingCards.svg?style=shield)](https://circleci.com/gh/pwildenhain/terminal_playing_cards)
-[![codecov](https://codecov.io/gh/pwildenhain/TerminalPlayingCards/branch/master/graph/badge.svg)](https://codecov.io/gh/pwildenhain/terminal_playing_cards)
+[![CircleCI](https://circleci.com/gh/pwildenhain/terminal_playing_cards.svg?style=shield)](https://circleci.com/gh/pwildenhain/terminal_playing_cards)
+[![codecov](https://codecov.io/gh/pwildenhain/terminal_playing_cards/branch/master/graph/badge.svg)](https://codecov.io/gh/pwildenhain/terminal_playing_cards)
 
 Python 📦 for playing card games in the terminal
 
