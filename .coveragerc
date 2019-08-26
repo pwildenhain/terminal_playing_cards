@@ -1,4 +1,4 @@
 # .coveragerc to control coverage.py
 [run]
-source = TerminalPlayingCards
-omit = TerminalPlayingCards/__main__.py
+source = terminal_playing_cards
+omit = terminal_playing_cards/__main__.py

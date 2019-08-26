@@ -3,8 +3,8 @@
 
 from typing import Union
 from random import shuffle
-from TerminalPlayingCards.card import Card
-from TerminalPlayingCards.config import DEFAULT_DECK_SPEC
+from terminal_playing_cards.card import Card
+from terminal_playing_cards.config import DEFAULT_DECK_SPEC
 
 
 class Deck:

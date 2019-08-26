@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: circleci/python:3.6
 
-    working_directory: ~/TerminalPlayingCards
+    working_directory: ~/terminal_playing_cards
 
     steps:
       # Step 1: obtain repo from GitHub
@@ -33,7 +33,7 @@ jobs:
             mkdir -p test-results/pytest
             pipenv run pytest -v --junit-xml=test-results/pytest/results.xml --cov
             pipenv run coverage html
-            pipenv run pylint TerminalPlayingCards --exit-zero
+            pipenv run pylint terminal_playing_cards --exit-zero
       - store_test_results:
           path: test-results
       - store_artifacts:

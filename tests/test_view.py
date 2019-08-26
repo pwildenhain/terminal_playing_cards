@@ -4,13 +4,13 @@
 # pylint: disable=redefined-outer-name
 
 import pytest
-from TerminalPlayingCards.view import View
+from terminal_playing_cards.view import View
 
 
 @pytest.fixture
 def two_card_view():
     """View with two cards"""
-    from TerminalPlayingCards.card import Card
+    from terminal_playing_cards.card import Card
 
     cards = [Card("A", "clubs", 0), Card("Q", "hearts", 0)]
     return View(cards)
@@ -19,7 +19,7 @@ def two_card_view():
 @pytest.fixture
 def two_card_view_negative_spacing():
     """View with two cards with negative spacing"""
-    from TerminalPlayingCards.card import Card
+    from terminal_playing_cards.card import Card
 
     cards = [Card("A", "clubs", 0), Card("Q", "hearts", 0)]
     return View(cards, spacing=-5)
@@ -31,7 +31,7 @@ def messy_view():
     View with four cards to cover various edge cases
     surrounding the ten face card
     """
-    from TerminalPlayingCards.card import Card
+    from terminal_playing_cards.card import Card
 
     cards = [
         Card("A", "clubs", hidden=True),
@@ -46,7 +46,7 @@ def messy_view():
 @pytest.fixture
 def five_card_view():
     """View with five cards"""
-    from TerminalPlayingCards.card import Card
+    from terminal_playing_cards.card import Card
 
     cards = [
         Card("2", "clubs", value=2),
@@ -62,7 +62,7 @@ def five_card_view():
 @pytest.fixture
 def five_card_view_sorted():
     """View with five cards sorted by value and suit"""
-    from TerminalPlayingCards.card import Card
+    from terminal_playing_cards.card import Card
 
     cards = [
         Card("A", "clubs", value=1),

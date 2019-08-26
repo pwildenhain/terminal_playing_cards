@@ -1,7 +1,7 @@
 """Test the Card class"""
 
 import pytest
-from TerminalPlayingCards.card import Card
+from terminal_playing_cards.card import Card
 
 
 def test_card_str_value():

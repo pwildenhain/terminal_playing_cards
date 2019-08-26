@@ -3,7 +3,7 @@
 # See: stackoverflow.com/questions/46089480/pytest-fixtures-redefining-name-from-outer-scope-pylint
 # pylint: disable=redefined-outer-name
 
-from TerminalPlayingCards.deck import Deck
+from terminal_playing_cards.deck import Deck
 
 
 def test_ace_high_deck():

@@ -1,13 +1,13 @@
 """Playground for testing module"""
 
-from TerminalPlayingCards import deck, view
+from terminal_playing_cards import Deck, View
 
-MY_DECK = deck.Deck()
+MY_DECK = Deck()
 
 MY_DECK.sort(sort_order=["suit"])
 
 SUITED_VIEWS = [
-    view.View([MY_DECK.pop() for _ in range(13)], spacing=-5) for _ in range(4)
+    View([MY_DECK.pop() for _ in range(13)], spacing=-5) for _ in range(4)
 ]
 
 if __name__ == "__main__":

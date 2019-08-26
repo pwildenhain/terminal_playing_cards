@@ -7,8 +7,8 @@
 # pylint: disable=missing-docstring
 
 from colorama import Style, Fore
-from TerminalPlayingCards.deck import Deck
-from TerminalPlayingCards.utils import convert_layers_to_string
+from terminal_playing_cards.deck import Deck
+from terminal_playing_cards.utils import convert_layers_to_string
 
 
 class View(Deck):
