@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "terminal_playing_cards"
+version = "0.1.0"
+description = "Create card games in the terminal"
+authors = ["Paul Wildenhain <pwildenhain@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+colorama = "^0.4.1"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^18.3-alpha.0", allows-prereleases = true}
+pylint = "^2.3"
+pytest = "^5.1"
+pytest-cov = "^2.7"
+sphinx = "^2.2"
+guzzle-sphinx-theme = "^0.7.11"
+m2r = "^0.2.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
