@@ -55,8 +55,17 @@ class Deck:
         return len(self.cards)
 
     def __add__(self, other):
-        """Add a Deck to another Deck"""
-        self.cards += other.cards
+        """Add a Deck/View, or Cards to another Deck/View"""
+        try:
+            self.cards += other.cards
+        except AttributeError:
+            is_a_card = [isinstance(card, Card) for card in other]
+            if all(is_a_card):
+                self.cards += other
+            else:
+                raise NotImplementedError(
+                    "Only a Deck/View, or list of Cards can be added to this class"
+                )
         return self
 
     def __getitem__(self, key):

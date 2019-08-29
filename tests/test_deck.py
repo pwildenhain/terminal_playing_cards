@@ -3,6 +3,7 @@
 # See: stackoverflow.com/questions/46089480/pytest-fixtures-redefining-name-from-outer-scope-pylint
 # pylint: disable=redefined-outer-name
 
+import pytest
 from terminal_playing_cards.deck import Deck
 
 
@@ -42,6 +43,36 @@ def test_adding_decks_together():
     deck_2 = Deck()
     combined_deck = deck_1 + deck_2
     assert len(combined_deck) == 104
+
+
+def test_adding_view_to_deck():
+    """Add a View to an existing Deck"""
+    from terminal_playing_cards import View
+
+    deck = Deck()
+    view = View([deck.pop() for _ in range(7)])
+    assert len(view) == 7
+    assert len(deck) == 45
+    deck += view
+    assert len(deck) == 52
+
+
+def test_adding_cards_to_deck():
+    """
+    Add a list of Cards to an existing Deck,
+    ensure that only a list of Cards is accepted
+    """
+    from terminal_playing_cards import Card
+
+    joker_1 = Card("JK", suit="none")
+    joker_2 = Card("JK", suit="none")
+    deck = Deck()
+    deck += [joker_1, joker_2]
+    assert len(deck) == 54
+
+    joker_3 = Card("JK", suit="none")
+    with pytest.raises(NotImplementedError):
+        deck += joker_3
 
 
 def test_shuffling_deck():

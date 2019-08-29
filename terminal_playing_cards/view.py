@@ -13,6 +13,7 @@ from terminal_playing_cards.utils import convert_layers_to_string
 
 class View(Deck):
     """View one or more playing cards in the terminal"""
+
     # No need to initialize Deck when View is created. Only looking to inherit
     # methods, not attributes
     # pylint: disable=super-init-not-called
@@ -22,6 +23,7 @@ class View(Deck):
         self.orientation = orientation
         self._spacing = None
         self.spacing = spacing
+
     # pylint: enable=super-init-not-called
 
     @property
@@ -108,4 +110,6 @@ class DummyCard:
     def __init__(self):
         self.face = " "
         self.hidden = False
+
+
 # pylint: enable=too-few-public-methods
