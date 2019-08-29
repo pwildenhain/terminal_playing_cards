@@ -14,9 +14,6 @@ black = {version = "^18.3-alpha.0", allows-prereleases = true}
 pylint = "^2.3"
 pytest = "^5.1"
 pytest-cov = "^2.7"
-sphinx = "^2.2"
-guzzle_sphinx_theme = "^0.7.11"
-m2r = "^0.2.1"
 
 [build-system]
 requires = ["poetry>=0.12"]
