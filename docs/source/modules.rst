@@ -1,7 +1,7 @@
-TerminalPlayingCards
-====================
+terminal_playing_cards
+======================
 
 .. toctree::
    :maxdepth: 4
 
-   TerminalPlayingCards
+   terminal_playing_cards
