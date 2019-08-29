@@ -15,7 +15,7 @@ pylint = "^2.3"
 pytest = "^5.1"
 pytest-cov = "^2.7"
 sphinx = "^2.2"
-guzzle-sphinx-theme = "^0.7.11"
+guzzle_sphinx_theme = "^0.7.11"
 m2r = "^0.2.1"
 
 [build-system]
