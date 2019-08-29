@@ -11,4 +11,4 @@ Full Documentation here: https://pwildenhain.github.io/terminal_playing_cards
 
 A little taste 🍰 of what is to come
 
-![](_static/screenshot.png)
+![](_static/run_as_module.png)
