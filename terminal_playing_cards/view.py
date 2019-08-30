@@ -2,8 +2,8 @@
 # Disable this pylint rule because of a conflict with black
 # See: github.com/python/black/issues/48
 # pylint: disable=bad-continuation
-# Ignore concerns about docstrings, since _all_ methods with docstrings
-# are picked up by sphinx-autodoc
+# Ignore concerns about docstrings, since not _all_ methods need a docstring
+# according to Google style guide
 # pylint: disable=missing-docstring
 
 from colorama import Style, Fore
@@ -28,7 +28,6 @@ class View(Deck):
 
     @property
     def orientation(self):
-        """Get the orientation of the View"""
         return self._orientation
 
     @orientation.setter
@@ -42,7 +41,6 @@ class View(Deck):
 
     @property
     def spacing(self):
-        "Get the amount of spacing between cards in the View"
         return self._spacing
 
     @spacing.setter
@@ -55,14 +53,17 @@ class View(Deck):
             )
 
     def _merge_horizontal(self) -> list:
-        """Merge all cards in the View horizontally"""
+        """Merges all cards in the View horizontally."""
         merged_grid = []
         positive_spacing = [" " for _ in range(self._spacing)]
-
+        # Combine the cards in the View at the grid layer level
         for layer in range(7):
             merged_layer = []
             card_position = 0
             for card in self:
+                # Need to know if the previous card was hidden or if it had a
+                # long face (like "10" or "JK") in order to know how to handle
+                # negative spacing when merging for the current layer
                 prev_card = (
                     self[card_position - 1] if card_position != 0 else DummyCard()
                 )
@@ -91,13 +92,13 @@ class View(Deck):
         return merged_grid
 
     def _merge_vertical(self) -> list:
-        """Merge all cards in the View vertically"""
+        """Merge all cards in the View vertically."""
         raise NotImplementedError(
             "Vertical orientation currently not implemented for the View class"
         )
 
     def __str__(self):
-        """Make the view look like a collection of playing cards"""
+        """Makes the View look like a collection of playing cards."""
         merge_fx = getattr(self, f"_merge_{self._orientation}")
         # Merge playing cards in desired direction
         merged_cards = merge_fx()

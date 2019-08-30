@@ -1,4 +1,6 @@
 """Create a class for a deck of playing cards"""
+# See terminal_playing_cards/view.py for why these are disabled
+# pylint: disable=missing-docstring
 # pylint: disable=bad-continuation
 
 from typing import Union
@@ -23,7 +25,7 @@ class Deck:
 
     @staticmethod
     def _get_spec_dict(specifications: Union[list, dict]):
-        """Translate Deck build specifications into a dictionary"""
+        """Translates Deck build specifications into a dictionary."""
         # Early return if they are passing custom specifications
         if isinstance(specifications, dict):
             return specifications
@@ -43,7 +45,7 @@ class Deck:
 
     @staticmethod
     def _build(specs_dict: dict, **kwargs: bool):
-        """Build a deck of cards according to specifications"""
+        """Builds a deck of cards according to specifications."""
         return [
             Card(face, suit, value=specs_dict.get(face).get(suit), **kwargs)
             for face in specs_dict.keys()
@@ -51,11 +53,10 @@ class Deck:
         ]
 
     def __len__(self):
-        """Return the number of cards"""
         return len(self.cards)
 
     def __add__(self, other):
-        """Add a Deck/View, or Cards to another Deck/View"""
+        """Add a Deck, View or Cards to another Deck/View"""
         try:
             self.cards += other.cards
         except AttributeError:
@@ -69,30 +70,37 @@ class Deck:
         return self
 
     def __getitem__(self, key):
-        """Returns the specified Card from it's index"""
         return self.cards[key]
 
     def __iter__(self):
-        """Prepare for iteration"""
         self._index = 0
         self._max = len(self)
         return self
 
     def __next__(self):
-        """Cycle through the iterable"""
         if self._index < self._max:
             card = self.cards[self._index]
             self._index += 1
             return card
         raise StopIteration
 
-    def pop(self, index: int = 0):
-        """Pop a card out of the Deck"""
+    def pop(self, index: int = 0) -> Card:
+        """Pops a card out of the Deck.
+
+        Works just like the list.pop() method on a collection of Cards.
+
+        Args:
+            index: The index in the list at which to pop
+                out a Card. Defaults to 0
+
+        Returns:
+            A Card object
+        """
         return self.cards.pop(index)
 
     @staticmethod
     def _sort_by_value(cards: list, order: str) -> list:
-        """Sort cards according to value. Use selection sort"""
+        """Sorts cards according to value. Uses selection sort"""
         unsorted_cards = cards.copy()
         sorted_cards = []
         sort_fx = min if order == "asc" else max
@@ -104,7 +112,7 @@ class Deck:
 
     @staticmethod
     def _sort_by_suit(cards: list, order: list) -> list:
-        """Sort cards according to suit"""
+        """Sorts cards according to given suit order"""
         unsorted_cards = cards.copy()
         sorted_cards = []
         for suit in order:
@@ -126,7 +134,36 @@ class Deck:
     def sort(
         self, sort_order: list = None, value_order: str = None, suit_order: list = None
     ) -> None:
-        """Sort the cards in the View"""
+        """Sort a collection of Cards.
+
+        Sort a collection of Cards in place according to a given sort order.
+        Defaults to sorting by Card value ascending and Card suit by
+        clubs, diamonds, spades, and then hearts.
+
+        Args:
+            sort_order: Specify whether to sort by value, suit, or
+                both. If both are provided, it will perform the sort operation
+                in that order. Defaults to value then suit
+            value_order: Specify how to sort by value. Available options
+                are asc and desc. Defaults to asc
+            suit_order: Specify how to sort by suit. Available options
+                are clubs, diamonds, spades, and/or hearts. Defaults to
+                clubs, diamons, spades, and then hearts.
+
+        Returns:
+            None. Sorts the collection of Cards in place.
+            For example:
+
+            from terminal_playing_cards import Card, View
+
+            my_hand = View([
+                Card("2", "hearts", value=2)
+                Card("A", "spades", value=1),
+            ])
+
+            my_hand.sort()
+            my_hand.sort(sort_order=["value"], value_order="desc")
+        """
         # Set default arguments
         sort_order = ["value", "suit"] if not sort_order else sort_order
         suit_order = (
@@ -141,6 +178,6 @@ class Deck:
             order_params = locals().get(f"{sort_option}_order")
             self.cards = sort_fx(self.cards, order_params)
 
-    def shuffle(self):
-        """Shuffle the Deck in place"""
+    def shuffle(self) -> None:
+        """Shuffles the Cards in place."""
         shuffle(self.cards)
