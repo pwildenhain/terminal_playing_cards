@@ -1,7 +1,10 @@
 [tool.poetry]
 name = "terminal_playing_cards"
 version = "0.1.0"
-description = "Create card games in the terminal"
+description = "Create card games for the terminal"
+readme = "README.md"
+repository = "https://github.com/pwildenhain/terminal_playing_cards"
+keywords = ["cards"]
 authors = ["Paul Wildenhain <pwildenhain@gmail.com>"]
 license = "MIT"
 
