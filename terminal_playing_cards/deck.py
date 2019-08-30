@@ -10,7 +10,42 @@ from terminal_playing_cards.config import DEFAULT_DECK_SPEC
 
 
 class Deck(object):
-    """Deck of playing cards"""
+    """A collection of one or more Cards.
+    
+    Base class for View. Designed to operate as a list
+    of Card objects, modeling a deck of playing cards.
+    Builds a list of Cards when it is initialized. Defaults
+    to building a standard 52 card deck, though custom
+    specifications are allowed. Built-in specifications
+    include "ace_high" and "face_cards_are_ten".
+
+    Attributes:
+        specifications: A list of intialization options
+            or a custom dictionary detailing exactly how the
+            Deck should be built. See terminal_playing_cards.config.DEFAULT_DECK_SPEC
+            for an example of how to build a custom dictionary.
+            Defaults to a standard 52 card deck. For example:
+
+            from terminal_playing_cards import Deck
+
+            standard_deck = Deck()
+            # Initialize all aces with a value of 13
+            ace_high_deck = Deck(specifications=["ace_high"])
+            # Initialize all face cards with a value of 10
+            face_ten_deck = Deck(specifications=["face_cards_are_ten"])
+            # Build a deck with just an ace of clubs with a value of 1
+            # and two of hearts with a value of 2
+            special_specs = {"A": {"clubs": 1}, "2": {"hearts": 2}}
+            special_deck = Deck(specifications=special_specs)
+        kwargs: Card initialization options.
+            Current options include:
+                - hidden: Boolean determining if the
+                    Card should be hidden when printed to
+                    the terminal. Defaults to False.
+                - picture: Boolean determining if a picture
+                    should be included when designing face
+                    cards (J, Q, K). Defaults to True.
+    """
 
     def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
         spec_dict = (

@@ -18,7 +18,30 @@ init(autoreset=True)
 
 @total_ordering
 class Card(object):
-    """A playing card in a standard deck"""
+    """A playing card in a standard deck.
+
+    Designed to look like a standard playing card when
+    printed to the terminal. For example:
+
+    from terminal_playing_cards import Card
+
+    ace_spades = Card("A", "spades")
+    print(ace_spades)
+
+    A list of Card objects is the main attribute of the
+    View and Deck classes.
+
+    Attributes:
+        face: Card face. For example: "A", "10", "Q".
+            See terminal_playing_cards.config.CARD_FACE_DICT
+            for valid options.
+        suit: Card suit. For example: "spades", "hearts".
+            See terminal_playing_cards.config.SUIT_SYMBOL_DICT
+            for valid options.
+        value: Integer value of the Card. Defaults to 0.
+        kwargs: Card initialization options. See kwargs
+            in help(Deck) for further information.
+    """
 
     def __init__(self, face: str, suit: str, value: int = 0, **kwargs: bool):
         self._face = None
