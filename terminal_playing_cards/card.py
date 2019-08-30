@@ -17,7 +17,7 @@ init(autoreset=True)
 
 
 @total_ordering
-class Card:
+class Card(object):
     """A playing card in a standard deck"""
 
     def __init__(self, face: str, suit: str, value: int = 0, **kwargs: bool):

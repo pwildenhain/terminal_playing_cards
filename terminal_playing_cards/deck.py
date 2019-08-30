@@ -9,7 +9,7 @@ from terminal_playing_cards.card import Card
 from terminal_playing_cards.config import DEFAULT_DECK_SPEC
 
 
-class Deck:
+class Deck(object):
     """Deck of playing cards"""
 
     def __init__(self, specifications: Union[list, dict] = None, **kwargs: bool):
