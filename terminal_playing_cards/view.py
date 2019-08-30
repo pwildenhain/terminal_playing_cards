@@ -12,7 +12,32 @@ from terminal_playing_cards.utils import convert_layers_to_string
 
 
 class View(Deck):
-    """View one or more playing cards in the terminal"""
+    """A view one or more Cards.
+    
+    Inherits the methods, but not the attributes, from the Deck
+    class. Designed to be printed in a terminal window alongside
+    other Card objects. For example:
+
+    from terminal_playing_cards import Card, View
+
+    ace_spades = Card("A", "spades")
+    ace_hearts = Card("A", "hearts")
+
+    hand = View([ace_spades, ace_hearts])
+    print(hand)
+    # Overlap cards on each other
+    hand = View([ace_spades, ace_hearts], spacing=-5)
+    print(hand)
+    
+    Attributes:
+        cards: A list of Cards.
+        orientation: How to display the cards when printed
+            to the terminal. Defaults to "horizontal".
+        spacing: How far apart to space the cards when
+            printed to the terminal. Negative spacing (placing
+            a card on top of the previous card) is allowed.
+            Defaults to 2.
+    """
 
     # No need to initialize Deck when View is created. Only looking to inherit
     # methods, not attributes
