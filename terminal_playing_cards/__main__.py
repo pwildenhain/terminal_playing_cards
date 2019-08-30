@@ -1,4 +1,4 @@
-"""Playground for testing module"""
+"""Showcase how cards look in the terminal"""
 
 from terminal_playing_cards import Deck, View
 
