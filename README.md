@@ -133,7 +133,7 @@ And now our hand doesn't have that card in it anymore.
 In a game like [Blackjack](https://en.wikipedia.org/wiki/Blackjack), face cards are all valued at ten. But the default deck specifications assign a jack a value of eleven. Set the `specifications` parameter to customize options like card values.
 
 ```python
->>> blackjack_deck = Deck(specifications=["face_cards"])
+>>> blackjack_deck = Deck(specifications=["face_cards_are_ten"])
 ```
 
 See `help(Deck)` for more details on how to customize `Deck` build specifications.
